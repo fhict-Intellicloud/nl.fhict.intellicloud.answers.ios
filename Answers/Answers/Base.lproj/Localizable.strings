@@ -5,3 +5,9 @@
   Created by Joris Vervuurt on 20-11-13.
   Copyright (c) 2013 IntelliCloud. All rights reserved.
 */
+
+"AnswerQuestion" = "Answer question";
+"TheQuestion" = "The question";
+"Answer" = "Answer";
+"SendAnswer" = "Send answer";
+"ReviewColleague" = "Review by colleague";

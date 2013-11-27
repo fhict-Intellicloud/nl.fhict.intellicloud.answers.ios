@@ -30,6 +30,7 @@
 		C6CB6D7C183E382200D34039 /* UIColor+IntelliCloudStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D7B183E382200D34039 /* UIColor+IntelliCloudStyle.m */; };
 		C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D7E183E397F00D34039 /* MainViewController.m */; };
 		C6EF8489183EA9C50055313D /* ReviewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */; };
+		CEA0A66D184626B700E0CC64 /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		C6CB6D7E183E397F00D34039 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C6EF8487183EA9C50055313D /* ReviewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsTableViewController.h; sourceTree = "<group>"; };
 		C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsTableViewController.m; sourceTree = "<group>"; };
+		CEA0A66B184626AE00E0CC64 /* QuestionDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDetailViewController.h; sourceTree = "<group>"; };
+		CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailViewController.m; sourceTree = "<group>"; };
 		F7CF620837114A219F247EDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,6 +241,8 @@
 				C6CB6D68183E08FA00D34039 /* QuestionsTableViewController.m */,
 				C6EF8487183EA9C50055313D /* ReviewsTableViewController.h */,
 				C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */,
+				CEA0A66B184626AE00E0CC64 /* QuestionDetailViewController.h */,
+				CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */,
 				C682437E18429214005AC9F2 /* Source.m in Sources */,
 				74D47732183CE9B300D33FC5 /* main.m in Sources */,
+				CEA0A66D184626B700E0CC64 /* QuestionDetailViewController.m in Sources */,
 				C6CB6D79183E1B4300D34039 /* SourceDefinition.m in Sources */,
 				C6CB6D69183E08FA00D34039 /* QuestionsTableViewController.m in Sources */,
 				C6CB6D7C183E382200D34039 /* UIColor+IntelliCloudStyle.m in Sources */,

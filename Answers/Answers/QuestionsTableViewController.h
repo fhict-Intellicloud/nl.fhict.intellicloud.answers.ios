@@ -10,6 +10,7 @@
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 #import <FormatterKit/TTTColorFormatter.h>
 #import "Question.h"
+#import "QuestionDetailViewController.h"
 
 /**
  * TableView for holding questions

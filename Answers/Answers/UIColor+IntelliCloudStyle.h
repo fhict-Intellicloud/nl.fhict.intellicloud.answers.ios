@@ -38,4 +38,9 @@
  */
 + (UIColor *)tableTintColor;
 
+/**
+ * @brief Get color for button label color
+ */
++ (UIColor *)buttonLabelTextColor;
+
 @end
