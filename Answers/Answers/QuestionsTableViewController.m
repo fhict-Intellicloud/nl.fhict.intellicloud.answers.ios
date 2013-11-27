@@ -39,6 +39,11 @@
     // Set title
     self.title = NSLocalizedString(@"Questions", nil);
     
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil action:nil];
+    
     // Load questions for view
     [self reload:nil];
 }

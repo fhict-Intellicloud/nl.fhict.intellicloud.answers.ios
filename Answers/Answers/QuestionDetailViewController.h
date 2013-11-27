@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Question.h"
+#import "WebserviceManager.h"
 
 
 @interface QuestionDetailViewController : UIViewController

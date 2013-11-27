@@ -50,7 +50,7 @@
         for (NSDictionary *attributes in JSON)
         {
             Question *question = [[Question alloc] initWithAttributes:attributes];
-            question.content = @"To be or not to be?";
+            //question.content = @"To be or not to be?";
             [mutableQuestions addObject:question];
         }
         

@@ -37,5 +37,22 @@
 }
 
 - (IBAction)sendAnswer:(id)sender {
+    NSDictionary *parameters = @{@"questionId": [NSString stringWithFormat:@"%d",_selectedQuestion.questionID],
+                                 @"answer": _answerTextView.text,
+                                 @"answererId":@"1",
+                                 @"answerState":@"1"};
+    
+    [[WebserviceManager sharedClient]POST:@"CreateAnswer" parameters:parameters
+        success:^(NSURLSessionDataTask *task, id responseObject)
+        {
+            NSLog(@"succes");
+        }
+        failure:^(NSURLSessionDataTask *task, NSError *error)
+        {            
+            NSLog(@"%@", error.description);
+        }
+    ]; 
 }
+
+
 @end
