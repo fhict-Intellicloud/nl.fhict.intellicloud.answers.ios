@@ -36,9 +36,9 @@
 }
 
 /**
- * Initialized a User with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
- * @param attributes to be parsed
+ * Get questions from webservice with block for processing
+ * @param array to hold questions (unused)
+ * @param error object for retrieval
  */
 + (NSURLSessionDataTask *)getQuestionsWithBlock:(void (^)(NSArray *questions, NSError *error))block
 {

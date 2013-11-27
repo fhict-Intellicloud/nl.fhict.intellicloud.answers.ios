@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3126C0491846247500F26A64 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126C0481846247500F26A64 /* Review.m */; };
 		74D47726183CE9B300D33FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47725183CE9B300D33FC5 /* Foundation.framework */; };
 		74D47728183CE9B300D33FC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47727183CE9B300D33FC5 /* CoreGraphics.framework */; };
 		74D4772A183CE9B300D33FC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47729183CE9B300D33FC5 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3126C0471846247500F26A64 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		3126C0481846247500F26A64 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		74D47722183CE9B300D33FC5 /* Answers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Answers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D47725183CE9B300D33FC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		74D47727183CE9B300D33FC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 				C6CB6D78183E1B4300D34039 /* SourceDefinition.m */,
 				C682437C18429214005AC9F2 /* Source.h */,
 				C682437D18429214005AC9F2 /* Source.m */,
+				3126C0471846247500F26A64 /* Review.h */,
+				3126C0481846247500F26A64 /* Review.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -292,7 +297,7 @@
 				ORGANIZATIONNAME = IntelliCloud;
 				TargetAttributes = {
 					74D47721183CE9B300D33FC5 = {
-						DevelopmentTeam = CU3Z5M9BXQ;
+						DevelopmentTeam = J36RKKAC5N;
 					};
 					74D4773C183CE9B300D33FC5 = {
 						TestTargetID = 74D47721183CE9B300D33FC5;
@@ -382,6 +387,7 @@
 				74D47736183CE9B300D33FC5 /* AppDelegate.m in Sources */,
 				C6CB6D76183E1B2400D34039 /* User.m in Sources */,
 				C6CB6D73183E11C700D34039 /* Question.m in Sources */,
+				3126C0491846247500F26A64 /* Review.m in Sources */,
 				C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */,
 				C682437E18429214005AC9F2 /* Source.m in Sources */,
 				74D47732183CE9B300D33FC5 /* main.m in Sources */,
