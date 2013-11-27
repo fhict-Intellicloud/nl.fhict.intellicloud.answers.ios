@@ -14,7 +14,7 @@
 @implementation Review
 
 /**
- * Initialized a Review with attributes from a (JSON) dictionary.
+ * Initializes a Review with attributes from a (JSON) dictionary.
  * @param attributes to be parsed
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes

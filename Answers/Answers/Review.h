@@ -17,7 +17,7 @@
  */
 typedef NS_ENUM(NSInteger, ReviewState)
 {
-    Open,               /**< Indicates the review is made but not jet implemented in the answer. */
+    Open,               /**< Indicates the review is made but not yet implemented in the answer. */
     Closed,             /**< Indicates the review is implemented in the answer. */
 };
 
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, ReviewState)
 @interface Review : NSObject
 
 /**
- * @property id
+ * @property reviewID
  * @brief Gets the unique identifier of the review.
  */
 @property (nonatomic, assign) NSInteger reviewID;
@@ -39,13 +39,13 @@ typedef NS_ENUM(NSInteger, ReviewState)
 @property (nonatomic, strong) NSString * content;
 
 /**
- * @property answerid
+ * @property answerID
  * @brief Gets the identifier of answer related to this review.
  */
 @property (nonatomic, assign) NSInteger answerID;
 
 /**
- * @property reviewstate
+ * @property reviewState
  * @brief Gets or sets the state of the review. This state indicates if the review is processed.
  */
 @property (nonatomic, assign) ReviewState reviewState;
@@ -57,13 +57,13 @@ typedef NS_ENUM(NSInteger, ReviewState)
 @property (nonatomic, strong) User * user;
 
 /**
- * @property creationtime
+ * @property creationTime
  * @brief Gets the creation date and time of the review.
  */
-@property (nonatomic, strong) NSDate * creationtime;
+@property (nonatomic, strong) NSDate * creationTime;
 
 /**
- * Initialized a Review with attributes from a (JSON) dictionary.
+ * Initializes a Review with attributes from a (JSON) dictionary.
  * @param attributes to be parsed
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
