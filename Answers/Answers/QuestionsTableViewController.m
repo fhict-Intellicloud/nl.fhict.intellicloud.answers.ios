@@ -39,6 +39,7 @@
     // Set title
     self.title = NSLocalizedString(@"Questions", nil);
     
+    //Add localized "back" button instead of ViewController title
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
                                      style:UIBarButtonItemStyleBordered
