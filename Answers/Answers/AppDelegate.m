@@ -12,7 +12,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Set application background fetch interval
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+
     return YES;
+}
+
+/**
+ * gets called when a background fetch is performed
+ */
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    // Get rootviewcontroller (tabbar)
+    UITabBarController *rootViewController = (UITabBarController *)self.window.rootViewController;
+    
+    // Get tableview for selected tab
+    // We presume this matches the setup in the Storyboard
+    id childViewController = [rootViewController.selectedViewController.childViewControllers firstObject];
+    
+    // Check if table supports bakground fetching
+    if([childViewController respondsToSelector:@selector(reloadForFetchWithCompletionHandler:)])
+    {
+        // Perform fetch, completion is handled inline
+        [childViewController reloadForFetchWithCompletionHandler:completionHandler];
+    }
+    
+    // Return failed status when background fetching in unavailable for the current tab
+    completionHandler(UIBackgroundFetchResultFailed);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

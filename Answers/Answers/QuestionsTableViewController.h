@@ -12,11 +12,22 @@
 #import "Question.h"
 #import "QuestionDetailViewController.h"
 
+NS_ENUM(NSUInteger, webServiceDataState)
+{
+    webServiceDataStateNoData,
+    webServiceDataStateNewData,
+    webServiceDataStateFailed
+};
+
+/**
+ * TableViewCell height for question
+ */
+static CGFloat const QuestionTableCellHeight = 82.0f;
+
 /**
  * TableView for holding questions
  */
 @interface QuestionsTableViewController : UITableViewController
-
 
 /**
  * @property questions
@@ -26,7 +37,14 @@
 
 /**
  * @brief Loads data from the webservice and reloads the tableview
+ * @param sender of the object (unused)
  */
-- (void)reload:(__unused id)sender;
+- (bool)reload:(__unused id)sender;
+
+/**
+ * @brief Reloads data for background fetch
+ * @param UIBackgroundFetchResult completion handler block
+ */
+- (void)reloadForFetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
 
 @end

@@ -37,7 +37,6 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *sendAnswerButton;
 
-
 /**
  * @property reviewByColleagueButton
  * @brief A property for the review button to use localized strings and tintcolor from style.
