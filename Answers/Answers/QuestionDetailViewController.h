@@ -12,7 +12,7 @@
 #import "Answer.h"
 
 
-@interface QuestionDetailViewController : UIViewController
+@interface QuestionDetailViewController : UIViewController 
 
 - (IBAction)sendAnswer:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
