@@ -8,7 +8,7 @@
 
 #import "QuestionDetailViewController.h"
 
-@interface QuestionDetailViewController ()
+@interface QuestionDetailViewController () <UITextViewDelegate>
 
 @end
 
@@ -41,6 +41,27 @@
     toolbar.items = [NSArray arrayWithObject:barButton];
     
     _answerTextView.inputAccessoryView = toolbar;
+    
+    //Set answerTextView delegate to slef to mimic placeholder effect
+    _answerTextView.delegate = self;
+}
+
+//Hide the placeholderlabel in the answerTextView to mimic the placholder effect
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if(![_answerTextView hasText]) {
+        _answerPlaceholderLabel.hidden = NO;
+    }
+}
+
+
+//Hide or show the placeholderlabel in the answerTextView to mimic the placeholder effect
+-(void) textViewDidChange:(UITextView *)textView {
+    if(![_answerTextView hasText]) {
+        _answerPlaceholderLabel.hidden = NO;
+    }
+    else{
+        _answerPlaceholderLabel.hidden = YES;
+    }
 }
 
 

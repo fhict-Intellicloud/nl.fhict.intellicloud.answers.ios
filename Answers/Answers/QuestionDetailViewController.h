@@ -61,4 +61,10 @@
  */
 @property (weak, nonatomic) IBOutlet UITextView *answerTextView;
 
+/**
+ * @property answerPlaceholderLabel
+ * @brief A property for the answerPlaceholderLabel to mimic the placeholder effect.
+ */
+@property (strong, nonatomic) IBOutlet UILabel *answerPlaceholderLabel;
+
 @end

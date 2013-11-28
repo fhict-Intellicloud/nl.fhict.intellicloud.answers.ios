@@ -141,6 +141,13 @@
                                     <action selector="sendAnswer:" destination="iqT-Gh-ZJL" eventType="touchUpInside" id="MJ2-UQ-JAJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Write your answer to the costumer here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="285" translatesAutoresizingMaskIntoConstraints="NO" id="yWw-uH-4bO">
+                                <rect key="frame" x="20" y="187" width="285" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -169,6 +176,7 @@
                     <navigationItem key="navigationItem" title="Answer question" id="m06-ab-7mx"/>
                     <connections>
                         <outlet property="answerLabel" destination="BR9-p9-Ide" id="KiG-ce-7jw"/>
+                        <outlet property="answerPlaceholderLabel" destination="yWw-uH-4bO" id="YRN-jZ-6rh"/>
                         <outlet property="answerTextView" destination="ucl-F9-vmZ" id="OsP-bz-SsH"/>
                         <outlet property="questionLabel" destination="lKc-jT-kgn" id="Wpu-4G-v2h"/>
                         <outlet property="questionTextView" destination="Wb2-gj-UzZ" id="3DZ-FR-HdB"/>
