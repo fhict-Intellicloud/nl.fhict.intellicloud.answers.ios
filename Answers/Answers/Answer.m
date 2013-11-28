@@ -16,7 +16,7 @@
  */
 + (NSURLSessionDataTask *) postAnswerWithParameters:(NSDictionary*) parameters withBlock: (void (^)(NSError *error))block
 {
-    return [[WebserviceManager sharedClient] GET:@"CreateAnswer" parameters:parameters
+    return [[WebserviceManager sharedClient] POST:@"CreateAnswer" parameters:parameters
             success:^(NSURLSessionDataTask *task, id responseObject) {
                 if (block) {
                     block(nil);

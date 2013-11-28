@@ -42,19 +42,25 @@
     
     _answerTextView.inputAccessoryView = toolbar;
     
-    //Set answerTextView delegate to slef to mimic placeholder effect
+    //Set answerTextView delegate to self to mimic placeholder effect
     _answerTextView.delegate = self;
+    
+    //Localize placeholder text
+    _answerPlaceholderLabel.text = NSLocalizedString(@"WriteAnswerHere", nil);
 }
 
-//Hide the placeholderlabel in the answerTextView to mimic the placholder effect
+/**
+ *@brief Hide the placeholderlabel in the answerTextView to mimic the placholder effect
+ */
 - (void)textViewDidEndEditing:(UITextView *)textView {
     if(![_answerTextView hasText]) {
         _answerPlaceholderLabel.hidden = NO;
     }
 }
 
-
-//Hide or show the placeholderlabel in the answerTextView to mimic the placeholder effect
+/**
+ *@brief Hide or show the placeholderlabel in the answerTextView to mimic the placeholder effect
+ */
 -(void) textViewDidChange:(UITextView *)textView {
     if(![_answerTextView hasText]) {
         _answerPlaceholderLabel.hidden = NO;
@@ -63,7 +69,6 @@
         _answerPlaceholderLabel.hidden = YES;
     }
 }
-
 
 /**
  * @brief Sends the answer data to the service
