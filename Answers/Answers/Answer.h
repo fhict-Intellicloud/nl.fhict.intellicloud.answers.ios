@@ -12,6 +12,10 @@
 
 @interface Answer : NSObject
 
+/**
+ * Sends a answer with the WebserviceManager SharedInstance.
+ * @param parameters: parameters for the service
+ */
 + (NSURLSessionDataTask *) postAnswerWithParameters:(NSDictionary*) parameters withBlock: (void (^)(NSError *error))block;
 
 @end
