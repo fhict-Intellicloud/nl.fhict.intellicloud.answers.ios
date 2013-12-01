@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3126C0491846247500F26A64 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126C0481846247500F26A64 /* Review.m */; };
+		31B4E3EB184BE1D500C96141 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3EA184BE1D500C96141 /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		31B4E3F0184BE1F800C96141 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3ED184BE1F800C96141 /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		31B4E3F1184BE1F800C96141 /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3EF184BE1F800C96141 /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		31B4E3F5184BE21200C96141 /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3F3184BE21200C96141 /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		31B4E3F6184BE21200C96141 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B4E3F4184BE21200C96141 /* GTMOAuth2ViewTouch.xib */; };
+		31B4E3F8184BE23200C96141 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B4E3F7184BE23200C96141 /* Security.framework */; };
+		31B4E3FA184BE23E00C96141 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B4E3F9184BE23E00C96141 /* SystemConfiguration.framework */; };
+		31B4E3FD184BE9DE00C96141 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3FC184BE9DE00C96141 /* LoginViewController.m */; };
 		74D47726183CE9B300D33FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47725183CE9B300D33FC5 /* Foundation.framework */; };
 		74D47728183CE9B300D33FC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47727183CE9B300D33FC5 /* CoreGraphics.framework */; };
 		74D4772A183CE9B300D33FC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47729183CE9B300D33FC5 /* UIKit.framework */; };
@@ -46,6 +54,19 @@
 /* Begin PBXFileReference section */
 		3126C0471846247500F26A64 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		3126C0481846247500F26A64 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		31B4E3E9184BE1D500C96141 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		31B4E3EA184BE1D500C96141 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		31B4E3EC184BE1F800C96141 /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
+		31B4E3ED184BE1F800C96141 /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2Authentication.m; sourceTree = "<group>"; };
+		31B4E3EE184BE1F800C96141 /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2SignIn.h; sourceTree = "<group>"; };
+		31B4E3EF184BE1F800C96141 /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2SignIn.m; sourceTree = "<group>"; };
+		31B4E3F2184BE21200C96141 /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2ViewControllerTouch.h; sourceTree = "<group>"; };
+		31B4E3F3184BE21200C96141 /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2ViewControllerTouch.m; sourceTree = "<group>"; };
+		31B4E3F4184BE21200C96141 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		31B4E3F7184BE23200C96141 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		31B4E3F9184BE23E00C96141 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		31B4E3FB184BE9DE00C96141 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		31B4E3FC184BE9DE00C96141 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		74D47722183CE9B300D33FC5 /* Answers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Answers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D47725183CE9B300D33FC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		74D47727183CE9B300D33FC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B4E3FA184BE23E00C96141 /* SystemConfiguration.framework in Frameworks */,
+				31B4E3F8184BE23200C96141 /* Security.framework in Frameworks */,
 				74D47728183CE9B300D33FC5 /* CoreGraphics.framework in Frameworks */,
 				74D4772A183CE9B300D33FC5 /* UIKit.framework in Frameworks */,
 				74D47726183CE9B300D33FC5 /* Foundation.framework in Frameworks */,
@@ -113,6 +136,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31B4E3E8184BE17000C96141 /* Oauth2 */ = {
+			isa = PBXGroup;
+			children = (
+				31B4E3F2184BE21200C96141 /* GTMOAuth2ViewControllerTouch.h */,
+				31B4E3F3184BE21200C96141 /* GTMOAuth2ViewControllerTouch.m */,
+				31B4E3F4184BE21200C96141 /* GTMOAuth2ViewTouch.xib */,
+				31B4E3EC184BE1F800C96141 /* GTMOAuth2Authentication.h */,
+				31B4E3ED184BE1F800C96141 /* GTMOAuth2Authentication.m */,
+				31B4E3EE184BE1F800C96141 /* GTMOAuth2SignIn.h */,
+				31B4E3EF184BE1F800C96141 /* GTMOAuth2SignIn.m */,
+				31B4E3E9184BE1D500C96141 /* GTMHTTPFetcher.h */,
+				31B4E3EA184BE1D500C96141 /* GTMHTTPFetcher.m */,
+			);
+			name = Oauth2;
+			sourceTree = "<group>";
+		};
 		74D47719183CE9B300D33FC5 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +176,8 @@
 		74D47724183CE9B300D33FC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31B4E3F9184BE23E00C96141 /* SystemConfiguration.framework */,
+				31B4E3F7184BE23200C96141 /* Security.framework */,
 				74D47725183CE9B300D33FC5 /* Foundation.framework */,
 				74D47727183CE9B300D33FC5 /* CoreGraphics.framework */,
 				74D47729183CE9B300D33FC5 /* UIKit.framework */,
@@ -149,6 +190,7 @@
 		74D4772B183CE9B300D33FC5 /* Answers */ = {
 			isa = PBXGroup;
 			children = (
+				31B4E3E8184BE17000C96141 /* Oauth2 */,
 				C6C4FBB918437090005DAA44 /* Categories */,
 				C6CB6D6E183E10E700D34039 /* Models */,
 				C6CB6D6F183E10F300D34039 /* Views */,
@@ -243,6 +285,8 @@
 				C6CB6D68183E08FA00D34039 /* QuestionsTableViewController.m */,
 				C6EF8487183EA9C50055313D /* ReviewsTableViewController.h */,
 				C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */,
+				31B4E3FB184BE9DE00C96141 /* LoginViewController.h */,
+				31B4E3FC184BE9DE00C96141 /* LoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B4E3F6184BE21200C96141 /* GTMOAuth2ViewTouch.xib in Resources */,
 				74D47738183CE9B300D33FC5 /* Images.xcassets in Resources */,
 				74F57E42183CEB810028C197 /* Localizable.strings in Resources */,
 				74F57E47183CEBB50028C197 /* iPhoneStoryboard.storyboard in Resources */,
@@ -389,11 +434,16 @@
 				C6CB6D73183E11C700D34039 /* Question.m in Sources */,
 				3126C0491846247500F26A64 /* Review.m in Sources */,
 				C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */,
+				31B4E3EB184BE1D500C96141 /* GTMHTTPFetcher.m in Sources */,
 				C682437E18429214005AC9F2 /* Source.m in Sources */,
 				74D47732183CE9B300D33FC5 /* main.m in Sources */,
 				C6CB6D79183E1B4300D34039 /* SourceDefinition.m in Sources */,
+				31B4E3F0184BE1F800C96141 /* GTMOAuth2Authentication.m in Sources */,
 				C6CB6D69183E08FA00D34039 /* QuestionsTableViewController.m in Sources */,
+				31B4E3FD184BE9DE00C96141 /* LoginViewController.m in Sources */,
+				31B4E3F5184BE21200C96141 /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				C6CB6D7C183E382200D34039 /* UIColor+IntelliCloudStyle.m in Sources */,
+				31B4E3F1184BE1F800C96141 /* GTMOAuth2SignIn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
