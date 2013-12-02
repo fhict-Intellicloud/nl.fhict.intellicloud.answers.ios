@@ -42,7 +42,7 @@
  */
 + (NSURLSessionDataTask *)getQuestionsWithBlock:(void (^)(NSArray *questions, NSError *error))block
 {
-    return [[WebserviceManager sharedClient] GET:@"getQuestions/1"
+    return [[WebserviceManager sharedClient] GET:@"IntelliCloudService.svc/getQuestions/1"
                                       parameters:nil
     success:^(NSURLSessionDataTask __unused *task, id JSON)
     {
