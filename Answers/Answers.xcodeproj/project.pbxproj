@@ -21,7 +21,6 @@
 		74F57E47183CEBB50028C197 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74F57E49183CEBB50028C197 /* iPhoneStoryboard.storyboard */; };
 		9FC8445E1195414B8753E2DC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7CF620837114A219F247EDB /* libPods.a */; };
 		C62C26AC184363160048399B /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C62C26AB184363160048399B /* MainTabBarController.m */; };
-		C6581CAA184CA20E00600009 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6581CA9184CA20E00600009 /* MenuViewController.m */; };
 		C682437E18429214005AC9F2 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = C682437D18429214005AC9F2 /* Source.m */; };
 		C6CB6D69183E08FA00D34039 /* QuestionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D68183E08FA00D34039 /* QuestionsTableViewController.m */; };
 		C6CB6D6D183E0F3200D34039 /* WebserviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D6C183E0F3200D34039 /* WebserviceManager.m */; };
@@ -31,6 +30,8 @@
 		C6CB6D7C183E382200D34039 /* UIColor+IntelliCloudStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D7B183E382200D34039 /* UIColor+IntelliCloudStyle.m */; };
 		C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CB6D7E183E397F00D34039 /* MainViewController.m */; };
 		C6EF8489183EA9C50055313D /* ReviewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */; };
+		CE08F19618477B8300628D7A /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE08F19518477B8300628D7A /* Answer.m */; };
+		CEA0A66D184626B700E0CC64 /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +66,6 @@
 		84E4AB3E3B5D42FAB84CB280 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C62C26AA184363160048399B /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		C62C26AB184363160048399B /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		C6581CA8184CA20E00600009 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		C6581CA9184CA20E00600009 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		C682437C18429214005AC9F2 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
 		C682437D18429214005AC9F2 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		C6CB6D67183E08FA00D34039 /* QuestionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsTableViewController.h; sourceTree = "<group>"; };
@@ -85,6 +84,10 @@
 		C6CB6D7E183E397F00D34039 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C6EF8487183EA9C50055313D /* ReviewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsTableViewController.h; sourceTree = "<group>"; };
 		C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsTableViewController.m; sourceTree = "<group>"; };
+		CE08F19418477B8300628D7A /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		CE08F19518477B8300628D7A /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		CEA0A66B184626AE00E0CC64 /* QuestionDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDetailViewController.h; sourceTree = "<group>"; };
+		CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailViewController.m; sourceTree = "<group>"; };
 		F7CF620837114A219F247EDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,8 +162,6 @@
 				74D4772C183CE9B300D33FC5 /* Supporting Files */,
 				C6CB6D6B183E0F3200D34039 /* WebserviceManager.h */,
 				C6CB6D6C183E0F3200D34039 /* WebserviceManager.m */,
-				C6581CA8184CA20E00600009 /* MenuViewController.h */,
-				C6581CA9184CA20E00600009 /* MenuViewController.m */,
 			);
 			path = Answers;
 			sourceTree = "<group>";
@@ -221,6 +222,8 @@
 				C6CB6D78183E1B4300D34039 /* SourceDefinition.m */,
 				C682437C18429214005AC9F2 /* Source.h */,
 				C682437D18429214005AC9F2 /* Source.m */,
+				CE08F19418477B8300628D7A /* Answer.h */,
+				CE08F19518477B8300628D7A /* Answer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +246,8 @@
 				C6CB6D68183E08FA00D34039 /* QuestionsTableViewController.m */,
 				C6EF8487183EA9C50055313D /* ReviewsTableViewController.h */,
 				C6EF8488183EA9C50055313D /* ReviewsTableViewController.m */,
+				CEA0A66B184626AE00E0CC64 /* QuestionDetailViewController.h */,
+				CEA0A66C184626B700E0CC64 /* QuestionDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -387,15 +392,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6CB6D6D183E0F3200D34039 /* WebserviceManager.m in Sources */,
+				CE08F19618477B8300628D7A /* Answer.m in Sources */,
 				C6EF8489183EA9C50055313D /* ReviewsTableViewController.m in Sources */,
 				C62C26AC184363160048399B /* MainTabBarController.m in Sources */,
 				74D47736183CE9B300D33FC5 /* AppDelegate.m in Sources */,
-				C6581CAA184CA20E00600009 /* MenuViewController.m in Sources */,
 				C6CB6D76183E1B2400D34039 /* User.m in Sources */,
 				C6CB6D73183E11C700D34039 /* Question.m in Sources */,
 				C6CB6D7F183E397F00D34039 /* MainViewController.m in Sources */,
 				C682437E18429214005AC9F2 /* Source.m in Sources */,
 				74D47732183CE9B300D33FC5 /* main.m in Sources */,
+				CEA0A66D184626B700E0CC64 /* QuestionDetailViewController.m in Sources */,
 				C6CB6D79183E1B4300D34039 /* SourceDefinition.m in Sources */,
 				C6CB6D69183E08FA00D34039 /* QuestionsTableViewController.m in Sources */,
 				C6CB6D7C183E382200D34039 /* UIColor+IntelliCloudStyle.m in Sources */,

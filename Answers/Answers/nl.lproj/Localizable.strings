@@ -5,3 +5,11 @@
   Created by Joris Vervuurt on 20-11-13.
   Copyright (c) 2013 IntelliCloud. All rights reserved.
 */
+
+"AnswerQuestion" = "Beantwoord vraag";
+"TheQuestion" = "De vraag";
+"Answer" = "Antwoord";
+"SendAnswer" = "Verzend antwoord";
+"ReviewColleague" = "Review door collega";
+"Back" = "Terug";
+"WriteAnswerHere" = "Schrijf hier uw antwoord aan de klant";

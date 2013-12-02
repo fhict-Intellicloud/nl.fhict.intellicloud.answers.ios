@@ -54,4 +54,13 @@
     return [UIColor colorWithRed:92/255.0f green:184/255.0f blue:136/255.0f alpha:1.0];
 }
 
+/**
+ * @brief Get color for button label color
+ */
++(UIColor *)buttonLabelTextColor
+{
+    // Same color as navigationbar background
+    return [UIColor navigationBarTintColor];
+}
+
 @end
