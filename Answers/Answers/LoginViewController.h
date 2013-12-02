@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "GTMOAuth2ViewControllerTouch.h"
-#import "GTMOAuth2Authentication.h"
+#import <GoogleOpenSource/GTMOAuth2ViewControllerTouch.h>
 
 static NSString *const kKeychainItemName = @"IntelliCloud OAuth2 Google";
 
