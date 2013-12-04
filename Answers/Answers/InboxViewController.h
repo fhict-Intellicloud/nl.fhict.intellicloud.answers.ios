@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface InboxViewController : BaseViewController
+@interface InboxViewController : UITableViewController
 
 @end
