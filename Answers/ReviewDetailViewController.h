@@ -28,4 +28,10 @@
  */
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
 
+/**
+ * @property commentsPlaceholderLabel
+ * @brief Label with the comments placeholder
+ */
+@property (strong, nonatomic) IBOutlet UILabel *commentsPlaceholderLabel;
+
 @end

@@ -1,7 +1,54 @@
-/* 
-  Localizable.strings
-  Answers
+/* No comment provided by engineer. */
+"About IntelliCloud" = "About IntelliCloud";
 
-  Created by Joris Vervuurt on 20-11-13.
-  Copyright (c) 2013 IntelliCloud. All rights reserved.
-*/
+/* No comment provided by engineer. */
+"Answer" = "Answer";
+
+/* No comment provided by engineer. */
+"AnswerQuestion" = "Answer question";
+
+/* No comment provided by engineer. */
+"Done" = "Done";
+
+/* No comment provided by engineer. */
+"In review" = "In review";
+
+/* No comment provided by engineer. */
+"Inbox" = "Inbox";
+
+/* No comment provided by engineer. */
+"Login with Google" = "Login with Google";
+
+/* No comment provided by engineer. */
+"Open" = "Open";
+
+/* No comment provided by engineer. */
+"Pending" = "Pending";
+
+/* No comment provided by engineer. */
+"Question" = "Question";
+
+/* No comment provided by engineer. */
+"Questions" = "Questions";
+
+/* No comment provided by engineer. */
+"Rejected" = "Rejected";
+
+/* No comment provided by engineer. */
+"ReviewColleague" = "Review by colleague";
+
+/* No comment provided by engineer. */
+"Reviews" = "Reviews";
+
+/* No comment provided by engineer. */
+"SendAnswer" = "Send answer";
+
+/* No comment provided by engineer. */
+"Sign out" = "Sign out";
+
+/* No comment provided by engineer. */
+"TheQuestion" = "The question";
+
+/* No comment provided by engineer. */
+"WriteAnswerHere" = "Write answer here...";
+

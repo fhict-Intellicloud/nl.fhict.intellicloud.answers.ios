@@ -38,7 +38,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    #warning Static numberOfRowsInSection
     return 5;
 }
 
