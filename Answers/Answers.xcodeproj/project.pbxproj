@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A04C89B1850E9280010ADE0 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A04C89A1850E9280010ADE0 /* CustomTableCell.m */; };
 		4A1817541850C0A200427877 /* CustomCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1817531850C0A200427877 /* CustomCellView.xib */; };
 		74D47726183CE9B300D33FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47725183CE9B300D33FC5 /* Foundation.framework */; };
 		74D47728183CE9B300D33FC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D47727183CE9B300D33FC5 /* CoreGraphics.framework */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A04C8991850E9280010ADE0 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
+		4A04C89A1850E9280010ADE0 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		4A1817531850C0A200427877 /* CustomCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellView.xib; path = Answers/Storyboards/CustomCellView.xib; sourceTree = "<group>"; };
 		74D47722183CE9B300D33FC5 /* Answers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Answers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D47725183CE9B300D33FC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,6 +228,8 @@
 			children = (
 				C6CE2B5C184DEBE900C27EB4 /* BaseViewController.h */,
 				C6CE2B5D184DEBE900C27EB4 /* BaseViewController.m */,
+				4A04C8991850E9280010ADE0 /* CustomTableCell.h */,
+				4A04C89A1850E9280010ADE0 /* CustomTableCell.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 			knownRegions = (
 				en,
 				nl,
+				Base,
 			);
 			mainGroup = 74D47719183CE9B300D33FC5;
 			productRefGroup = 74D47723183CE9B300D33FC5 /* Products */;
@@ -437,6 +443,7 @@
 			files = (
 				C6CB6D6D183E0F3200D34039 /* WebserviceManager.m in Sources */,
 				C6EF8489183EA9C50055313D /* ReviewsTableViewController.m in Sources */,
+				4A04C89B1850E9280010ADE0 /* CustomTableCell.m in Sources */,
 				C6CE2B5B184DEB1C00C27EB4 /* InboxViewController.m in Sources */,
 				C6FFDBEC184F527C00349F3C /* Answer.m in Sources */,
 				74D47736183CE9B300D33FC5 /* AppDelegate.m in Sources */,
