@@ -17,6 +17,7 @@
 - (void)awakeFromNib
 {
     self.animationDuration = 0.15f; // just right
+    self.contentViewScaleValue = 0.66f; // % size of content view when menu is shown
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
     self.backgroundImage = [UIImage imageNamed:@"MenuBackground"];

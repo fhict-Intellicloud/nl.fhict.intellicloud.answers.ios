@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <RESideMenu/RESideMenu.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 /**
  * TableViewCell height for menu
