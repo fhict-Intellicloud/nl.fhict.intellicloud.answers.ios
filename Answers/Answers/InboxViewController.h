@@ -10,5 +10,5 @@
 #import "BaseViewController.h"
 
 @interface InboxViewController : BaseViewController
-
+@property (strong, nonatomic) IBOutlet UITableView *inboxTableView;
 @end
