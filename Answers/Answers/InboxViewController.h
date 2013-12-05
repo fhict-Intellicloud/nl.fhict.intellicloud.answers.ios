@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "CustomTableCell.h"
+
 
 @interface InboxViewController : BaseViewController
+
+@property (strong, nonatomic) IBOutlet UITableView *inboxTableView;
 
 @end
