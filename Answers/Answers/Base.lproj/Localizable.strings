@@ -5,6 +5,9 @@
 "Answer" = "Answer";
 
 /* No comment provided by engineer. */
+"AnswerColleague" = "Answer of colleague";
+
+/* No comment provided by engineer. */
 "AnswerQuestion" = "Answer question";
 
 /* No comment provided by engineer. */
@@ -41,6 +44,9 @@
 "Reviews" = "Reviews";
 
 /* No comment provided by engineer. */
+"SendReview" = "Send review";
+
+/* No comment provided by engineer. */
 "SendAnswer" = "Send answer";
 
 /* No comment provided by engineer. */
@@ -52,3 +58,11 @@
 /* No comment provided by engineer. */
 "WriteAnswerHere" = "Write answer here...";
 
+/* No comment provided by engineer. */
+"WriteReviewHere" = "Write review here...";
+
+/* No comment provided by engineer. */
+"ReviewAnswer" = "Review answer";
+
+/* No comment provided by engineer. */
+"YourComments" = "Your comments";

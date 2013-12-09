@@ -325,6 +325,41 @@
             </objects>
             <point key="canvasLocation" x="1314" y="-1709"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Lp4-3a-b8h">
+            <objects>
+                <viewController id="rLS-YB-qjZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NNW-I0-abm"/>
+                        <viewControllerLayoutGuide type="bottom" id="XBT-xm-mlt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aTV-w8-CU4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Answer of colleague" translatesAutoresizingMaskIntoConstraints="NO" id="Xvs-yX-fnK">
+                                <rect key="frame" x="14" y="115" width="291" height="433"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ANSWER OF COLLEAGUE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA2-1q-N40">
+                                <rect key="frame" x="20" y="84" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hHn-Ey-Kp9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUa-KN-bKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="-1044"/>
+        </scene>
         <!--Review Detail View Controller-->
         <scene sceneID="7xO-er-q3m">
             <objects>
@@ -356,10 +391,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QH-Eo-OtH">
-                                <rect key="frame" x="20" y="508" width="280" height="33"/>
+                                <rect key="frame" x="20" y="508" width="280" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Verstuur review">
+                                <state key="normal" title="Send review">
+                                    <color key="titleColor" red="0.11764705882352941" green="0.53333333333333333" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -367,6 +403,31 @@
                                 <rect key="frame" x="0.0" y="221" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AnswerOfColleagueCell" id="vtw-6W-gkx">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vtw-6W-gkx" id="Prm-XL-z6V">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMF-tK-8C3">
+                                                    <rect key="frame" x="20" y="6" width="267" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rLS-YB-qjZ" kind="push" id="QpT-45-rlI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="CGN-aU-yVF" id="ZqX-RK-cOo"/>
+                                    <outlet property="delegate" destination="CGN-aU-yVF" id="Lct-tB-ozM"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8io-8N-S29">
                                 <rect key="frame" x="0.0" y="350" width="320" height="140"/>
@@ -388,9 +449,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5X-Ui-OfW">
-                                <rect key="frame" x="20" y="356" width="280" height="30"/>
+                                <rect key="frame" x="25" y="352" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -399,10 +460,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="eYa-ST-yXu"/>
                     <connections>
+                        <outlet property="answerColleagueLabel" destination="Wtd-Gr-ZNv" id="u9p-ir-QDg"/>
                         <outlet property="answerColleagueTableView" destination="26g-y1-VZ1" id="UDJ-MF-dQq"/>
+                        <outlet property="commentsLabel" destination="fLo-pH-sPI" id="pNd-KA-XGK"/>
                         <outlet property="commentsPlaceholderLabel" destination="K5X-Ui-OfW" id="pr1-uq-9UT"/>
                         <outlet property="commentsTextView" destination="TlX-vi-v9N" id="qdt-3S-lbM"/>
+                        <outlet property="questionLabel" destination="qTt-nc-Sff" id="XfS-lY-Tb3"/>
                         <outlet property="questionTextView" destination="S4B-vU-677" id="gbL-gB-zOf"/>
+                        <outlet property="sendReviewButton" destination="4QH-Eo-OtH" id="YIh-YP-2zh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOS-Gf-eHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
