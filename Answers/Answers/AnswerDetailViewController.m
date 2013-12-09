@@ -38,6 +38,8 @@
     //Add a inputAccessory to hide the keyboard when typing an answer.
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:_answerTextbox action:@selector(resignFirstResponder)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+	// Change the tintColor of the toolbar to IntelliCloud navigationBarTintColor
+	toolbar.tintColor = [UIColor navigationBarTintColor];
     toolbar.items = [NSArray arrayWithObject:barButton];
     
     _answerTextbox.inputAccessoryView = toolbar;
