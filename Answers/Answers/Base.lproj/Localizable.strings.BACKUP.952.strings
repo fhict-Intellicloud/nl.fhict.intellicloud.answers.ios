@@ -1,5 +1,6 @@
 /* No comment provided by engineer. */
 "About IntelliCloud" = "About IntelliCloud";
+<<<<<<< HEAD
 
 /* No comment provided by engineer. */
 "Answer" = "Answer";
@@ -66,6 +67,8 @@
 
 /* No comment provided by engineer. */
 "YourComments" = "Your comments";
+=======
+
 /* No comment provided by engineer. */
 "Answer" = "Answer";
 
@@ -120,3 +123,4 @@
 /* No comment provided by engineer. */
 "Info" = "Info";
 
+>>>>>>> upstream/master

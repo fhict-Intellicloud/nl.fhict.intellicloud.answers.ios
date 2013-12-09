@@ -37,6 +37,9 @@
 		C6FFDBEC184F527C00349F3C /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFDBEB184F527C00349F3C /* Answer.m */; };
 		C6FFDBEF184F53F600349F3C /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFDBEE184F53F600349F3C /* QuestionDetailViewController.m */; };
 		DA140073184F6F1C00325D65 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA140072184F6F1C00325D65 /* AnswerDetailViewController.m */; };
+		DA93E18D1850B52700D6E81C /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA93E18C1850B52700D6E81C /* AboutTableViewController.m */; };
+		DA93E1901850B98500D6E81C /* AcknowledgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA93E18F1850B98500D6E81C /* AcknowledgementViewController.m */; };
+		DA93E1921850C66900D6E81C /* Pods-acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = DA93E1911850C66900D6E81C /* Pods-acknowledgements.markdown */; };
 		DAE844F6184F4F2600BCF896 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE844F5184F4F2600BCF896 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,11 @@
 		C6FFDBEE184F53F600349F3C /* QuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailViewController.m; sourceTree = "<group>"; };
 		DA140071184F6F1C00325D65 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
 		DA140072184F6F1C00325D65 /* AnswerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailViewController.m; sourceTree = "<group>"; };
+		DA93E18B1850B52700D6E81C /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		DA93E18C1850B52700D6E81C /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		DA93E18E1850B98500D6E81C /* AcknowledgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementViewController.h; sourceTree = "<group>"; };
+		DA93E18F1850B98500D6E81C /* AcknowledgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementViewController.m; sourceTree = "<group>"; };
+		DA93E1911850C66900D6E81C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Pods-acknowledgements.markdown"; path = "Pods/Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DAE844F4184F4F2600BCF896 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DAE844F5184F4F2600BCF896 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F7CF620837114A219F247EDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +145,7 @@
 		74D47719183CE9B300D33FC5 = {
 			isa = PBXGroup;
 			children = (
+				DA93E1911850C66900D6E81C /* Pods-acknowledgements.markdown */,
 				74D47754183CEA0200D33FC5 /* Storyboards */,
 				74D4772B183CE9B300D33FC5 /* Answers */,
 				74D47744183CE9B300D33FC5 /* AnswersTests */,
@@ -281,6 +290,10 @@
 				DAE844F5184F4F2600BCF896 /* LoginViewController.m */,
 				DA140071184F6F1C00325D65 /* AnswerDetailViewController.h */,
 				DA140072184F6F1C00325D65 /* AnswerDetailViewController.m */,
+				DA93E18B1850B52700D6E81C /* AboutTableViewController.h */,
+				DA93E18C1850B52700D6E81C /* AboutTableViewController.m */,
+				DA93E18E1850B98500D6E81C /* AcknowledgementViewController.h */,
+				DA93E18F1850B98500D6E81C /* AcknowledgementViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -383,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA93E1921850C66900D6E81C /* Pods-acknowledgements.markdown in Resources */,
 				74D47738183CE9B300D33FC5 /* Images.xcassets in Resources */,
 				74F57E42183CEB810028C197 /* Localizable.strings in Resources */,
 				74F57E47183CEBB50028C197 /* iPhoneStoryboard.storyboard in Resources */,
@@ -443,8 +457,10 @@
 				74D47736183CE9B300D33FC5 /* AppDelegate.m in Sources */,
 				C6581CAA184CA20E00600009 /* MenuViewController.m in Sources */,
 				C6CB6D76183E1B2400D34039 /* User.m in Sources */,
+				DA93E18D1850B52700D6E81C /* AboutTableViewController.m in Sources */,
 				C6CB6D73183E11C700D34039 /* Question.m in Sources */,
 				C6CB6D7F183E397F00D34039 /* MainNavigationController.m in Sources */,
+				DA93E1901850B98500D6E81C /* AcknowledgementViewController.m in Sources */,
 				DAE844F6184F4F2600BCF896 /* LoginViewController.m in Sources */,
 				C6CE2B5E184DEBE900C27EB4 /* BaseViewController.m in Sources */,
 				C6FFDBEF184F53F600349F3C /* QuestionDetailViewController.m in Sources */,
