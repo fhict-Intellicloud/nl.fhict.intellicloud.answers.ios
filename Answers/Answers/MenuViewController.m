@@ -206,12 +206,6 @@
 		// Get data item for this row
 		NSDictionary *itemForRow = [[_menuItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		
-		// Get navigation controller for sliding menu
-		UINavigationController *navigationController = (UINavigationController *)self.sideMenuViewController.contentViewController;
-		
-		
-		
-		
 		// press logout? do it
 		if ([[itemForRow valueForKey:@"title"] isEqualToString:NSLocalizedString(@"About IntelliCloud", nil)])
 		{
