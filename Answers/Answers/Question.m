@@ -25,12 +25,15 @@
         return nil;
     }
     
-    self.questionID = [[attributes valueForKeyPath:@"Id"] integerValue];
+    self.questionID = [[[[attributes valueForKeyPath:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue];
     self.content = [attributes valueForKey:@"Content"];
-    self.questionUser = [[User alloc] initWithAttributes:[attributes valueForKey:@"User"]];
-    self.answerUser = [[User alloc] initWithAttributes:[attributes valueForKey:@"Answerer"]];
+    
+    [User getWithURL:[attributes valueForKey:@"User"] block:^(User *user, NSError *error) {
+        self.questionUser = user;
+    }];
+    
     self.questionState = [[attributes valueForKey:@"QuestionState"] integerValue];
-    self.sourceType = [[SourceDefinition alloc] initWithAttributes:[attributes valueForKey:@"SourceType"]];
+    self.source = [[UserSource alloc] initWithAttributes:[attributes valueForKey:@"Source"]];
     self.creationTime = [NSDate dateFromDotnetDate:[attributes valueForKey:@"CreationTime"]];
     
     return self;
@@ -86,9 +89,8 @@
         self.questionID = [aDecoder decodeIntegerForKey:@"Id"];
         self.content = [aDecoder decodeObjectForKey:@"Content"];
         self.questionUser = [aDecoder decodeObjectForKey:@"User"];
-        self.answerUser = [aDecoder decodeObjectForKey:@"Answerer"];
         self.questionState = [aDecoder decodeIntegerForKey:@"QuestionState"];
-        self.sourceType = [aDecoder decodeObjectForKey:@"SourceType"];
+        self.source = [aDecoder decodeObjectForKey:@"Source"];
         self.creationTime = [aDecoder decodeObjectForKey:@"CreationTime"];
     }
     
@@ -105,9 +107,8 @@
     [aCoder encodeInteger:self.questionID forKey:@"Id"];
     [aCoder encodeObject:self.content forKey:@"Content"];
     [aCoder encodeObject:self.questionUser forKey:@"User"];
-    [aCoder encodeObject:self.answerUser forKey:@"Answerer"];
     [aCoder encodeInteger:self.questionState forKey:@"QuestionState"];
-    [aCoder encodeObject:self.sourceType forKey:@"SourceType"];
+    [aCoder encodeObject:self.source forKey:@"Source"];
     [aCoder encodeObject:self.creationTime forKey:@"CreationTime"];
 }
 

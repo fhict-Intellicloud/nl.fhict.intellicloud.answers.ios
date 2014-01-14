@@ -35,8 +35,8 @@
                        @{@"title": NSLocalizedString(@"Inbox", nil), @"icon": @"", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateUpForAnswer]},  //implement predicates
                        @{@"title": NSLocalizedString(@"Open", nil), @"icon": @"MenuIconOpen", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
                        @{@"title": NSLocalizedString(@"Rejected", nil), @"icon": @"MenuIconRejected", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
-                       @{@"title": NSLocalizedString(@"Pending", nil), @"icon": @"MenuIconPending", @"predicate": @"pendingViewController"},
-                       @{@"title": NSLocalizedString(@"Review", nil), @"icon": @"MenuIconReview", @"predicate": @"reviewViewController"}],
+                       @{@"title": NSLocalizedString(@"Pending", nil), @"icon": @"MenuIconPending", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
+                       @{@"title": NSLocalizedString(@"Review", nil), @"icon": @"MenuIconReview", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]}],
                    @[
                        @{@"title": NSLocalizedString(@"About IntelliCloud", nil), @"icon": @"", @"id": @"aboutViewController"}],  ///rename id to storyboard id?
                    @[
@@ -163,12 +163,13 @@
             {
                 navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"questionsViewController"]];
                 // Get root view of navigation controller
-                rootView = navigationController.viewControllers[0];
+                rootView = [navigationController.viewControllers firstObject];
             }
 
 			NSLog(@"Setting predicate %@", (NSPredicate *)[itemForRow objectForKey:@"predicate"]);
 			QuestionsTableViewController *questionsTable = (QuestionsTableViewController *)rootView;
 			[questionsTable filterTableWithPredicate:(NSPredicate *)[itemForRow objectForKey:@"predicate"]];
+            [questionsTable reload:nil];
 		}
 		
 		// do we have an action? run it

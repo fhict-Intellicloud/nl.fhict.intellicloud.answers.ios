@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
-#import "SourceDefinition.h"
-#import "LanguageDefinition.h"
+#import "UserSource.h"
 #import "NSDate+Dotnet.h"
 #import "WebserviceManager.h"
 
@@ -39,26 +38,13 @@ typedef NS_ENUM(NSInteger, QuestionState)
  * @property content
  * @brief Gets the content of the question. The content contains question asked by the User.
  */
-@property (nonatomic, strong) NSString * content;
-
-/**
- * @property languageDefinition
- * @brief Gets or sets the language the answer is written in.
- */
-@property (nonatomic, strong) LanguageDefinition * languageDefinition;
+@property (nonatomic, strong) NSString *content;
 
 /**
  * @property questionUser
  * @brief Gets the user that aksed the question.
  */
-@property (nonatomic, strong) User * questionUser;
-
-/**
- * @property answerUser
- * @brief Gets the user that is going to answer the question.
- */
-@property (nonatomic, strong) User * answerUser;
-
+@property (nonatomic, strong) User *questionUser;
 /**
  * @property questionState
  * @brief Gets the state of the question.
@@ -66,11 +52,11 @@ typedef NS_ENUM(NSInteger, QuestionState)
 @property (nonatomic, assign) QuestionState questionState;
 
 /**
- * @property sourceType
+ * @property source
  * @brief Gets the type of source that is used to return the answer to the question.
  * The actual source can be found using the Question.User field.
  */
-@property (nonatomic, strong) SourceDefinition *sourceType;
+@property (nonatomic, strong) UserSource *source;
 
 /**
  * @property creayionTime

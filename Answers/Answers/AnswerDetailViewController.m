@@ -93,15 +93,31 @@
  */
 - (IBAction)sendAnswerClick:(id)sender
 {
-    NSDictionary *parameters = @{@"questionId": [NSString stringWithFormat:@"%ld",(long)_selectedQuestion.questionID],
-                                 @"answer": _answerTextbox.text,
-                                 @"answererId":@"1",
-                                 @"answerState":@"1"};
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Sending answer...", nil)];
     
-    [Answer postAnswerWithParameters:parameters withBlock:^(NSError* error){
-        if(error)
+    [User getAuthorizedUserWithBlock:^(User *user, NSError *error) {
+        if (!error)
         {
-            NSLog(@"%@", error.description);
+            NSDictionary *parameters = @{@"questionId": [NSString stringWithFormat:@"%li", (long)_selectedQuestion.questionID],
+                                         @"answer": _answerTextbox.text,
+                                         @"answererId":[NSString stringWithFormat:@"%li", (long)user.userID],
+                                         @"answerState":@"0"};
+            
+            [Answer postAnswerWithParameters:parameters withBlock:^(NSError* error){
+                if (!error)
+                {
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Answer sent", nil)];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                else
+                {
+                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed to send answer", nil)];
+                }
+            }];
+        }
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed to send answer", nil)];
         }
     }];
 }

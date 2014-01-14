@@ -61,9 +61,6 @@
         success = NO;
     }
     
-    // Log the result
-    NSLog(@"PersistentStoreManager: %@", (success ? @"data loaded successfully." : @"failed to load data."));
-    
     // Return the result
     return success;
 }
@@ -78,10 +75,19 @@
     NSString *persistentStoreDataFilePath = [PersistentStoreDataFilePath stringByExpandingTildeInPath];
     BOOL success = [NSKeyedArchiver archiveRootObject:self.persistentStoreData toFile:persistentStoreDataFilePath];
     
-    // Log the result
-    NSLog(@"PersistentStoreManager: %@", (success ? @"data saved successfully." : @"failed to save data."));
-    
     // Return the result
+    return success;
+}
+
+/**
+ * @brief Method for clearing all data locally
+ * @return Boolean value indicating if the data was cleared successfully
+ */
+- (BOOL)clearData
+{
+    self.persistentStoreData = [[PersistentStoreData alloc] init];
+    BOOL success = [self saveData];
+    
     return success;
 }
 

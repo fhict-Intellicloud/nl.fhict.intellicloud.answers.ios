@@ -70,8 +70,8 @@ typedef NS_ENUM(NSInteger, AnswerState)
 
 /**
  * Sends a answer with the WebserviceManager SharedInstance.
- * @param parameters: parameters for the service
+ * @param body: body for the service
  */
-+ (NSURLSessionDataTask *) postAnswerWithParameters:(NSDictionary*) parameters withBlock: (void (^)(NSError *error))block;
++ (NSURLSessionDataTask *)postAnswerWithParameters:(NSDictionary*) parameters withBlock: (void (^)(NSError *error))block;
 
 @end
