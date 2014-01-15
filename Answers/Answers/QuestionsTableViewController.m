@@ -52,8 +52,10 @@
         }
     }
     
-    // Load questions for view
-    //[self reload:nil];
+    // Load data from persistent store before trying to get the most up-to-date data
+    PersistentStoreData *persistentStoreData = [PersistentStoreManager sharedClient].persistentStoreData;
+    _rawData = [NSMutableArray arrayWithArray:persistentStoreData.questions];
+    [self filterTableWithPredicate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setDefaultViewTitle) name:kLoggedInNotification object:nil];
 }
@@ -63,6 +65,7 @@
 {
     // Set title
     self.title = NSLocalizedString(@"Questions", nil);
+    [self reload:nil];
 }
 
 /**
@@ -83,12 +86,14 @@
         [self filterTableWithPredicate];
             
         state = !error;
+        
+        [self.refreshControl endRefreshing];
     }];
 
     //_rawData = [Question getDummyData];
     //_tableData = [_rawData filteredArrayUsingPredicate:_predicate];
     //[self.tableView reloadData];
-    [self.refreshControl endRefreshing];
+    
     
     return state;
 }
@@ -177,22 +182,10 @@
     }
     else
     {
-        Source *mailSource = nil;
-        @try
+        NSString *sourceValue = question.source.value;
+        if (sourceValue != nil)
         {
-            NSPredicate *mailPredicate = [NSPredicate predicateWithFormat:@"sourceDefinition.name == %@", @"Mail"];
-            mailSource = [[question.questionUser.sources filteredArrayUsingPredicate:mailPredicate] firstObject];
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"Whups: %@", exception);
-        }
-        @finally
-        {
-            if (mailSource != nil)
-            {
-                authorText = [NSString stringWithFormat:@"<%@>", mailSource.value];
-            }
+            authorText = sourceValue;
         }
     }
     authorLabel.text = authorText;

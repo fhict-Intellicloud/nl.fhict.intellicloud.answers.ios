@@ -22,10 +22,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[WebserviceManager alloc] initWithBaseURL:[NSURL URLWithString:WebserviceManagerBaseURLString]];
+        [_sharedClient setRequestSerializer:[AFJSONRequestSerializer serializer]];
     });
     
     NSString* accessToken = [[AuthenticationManager sharedClient] getAccessToken];
-    NSLog(@"Access Token: %@", accessToken);
+    //NSLog(@"Access Token: %@", accessToken);
     
     if(accessToken != nil)
     {
@@ -37,7 +38,7 @@
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:NSJSONWritingPrettyPrinted error:&error];
         
         NSString* backendToken = [jsonData base64EncodedStringWithOptions:0];
-        NSLog(@"Backend Token: %@", backendToken);
+        //NSLog(@"Backend Token: %@", backendToken);
         
         [_sharedClient.requestSerializer setValue:backendToken forHTTPHeaderField:@"AuthorizationToken"];
     }

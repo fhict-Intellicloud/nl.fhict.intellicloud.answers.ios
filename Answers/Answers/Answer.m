@@ -44,16 +44,12 @@
     success:^(NSURLSessionDataTask *task, id responseObject)
     {
       if (block)
-      {
           block(nil);
-      }
     }
     failure:^(NSURLSessionDataTask *task, NSError *error)
     {
       if (block)
-      {
           block(error);
-      }
     }];
 }
 

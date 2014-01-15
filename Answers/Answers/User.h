@@ -91,4 +91,11 @@ typedef NS_ENUM(NSInteger, UserType)
  */
 + (NSURLSessionDataTask *)getAuthorizedUserWithBlock:(void (^)(User *user, NSError *error))block;
 
+/**
+ * Retrieves a user from a backend url.
+ * @param attributes to be parsed
+ * @param attributes to be parsed
+ */
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url block:(void (^)(User *user, NSError *error))block;
+
 @end

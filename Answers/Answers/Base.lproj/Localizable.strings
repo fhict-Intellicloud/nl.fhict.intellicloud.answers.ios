@@ -55,3 +55,11 @@
 /* No comment provided by engineer. */
 "Info" = "Info";
 
+/* No comment provided by engineer. */
+"Answer sent" = "Answer sent";
+
+/* No comment provided by engineer. */
+"Failed to send answer" = "Failed to send answer";
+
+/* No comment provided by engineer. */
+"Sending answer..." = "Sending answer...";

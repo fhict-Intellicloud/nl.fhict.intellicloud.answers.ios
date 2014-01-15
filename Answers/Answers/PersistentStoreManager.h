@@ -36,4 +36,10 @@ static NSString * const PersistentStoreDataFilePath = @"~/Documents/PersistentSt
  */
 - (BOOL)saveData;
 
+/**
+ * @brief Method for clearing all data locally
+ * @return Boolean value indicating if the data was cleared successfully
+ */
+- (BOOL)clearData;
+
 @end

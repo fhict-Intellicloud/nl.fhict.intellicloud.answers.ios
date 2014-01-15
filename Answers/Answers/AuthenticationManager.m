@@ -166,6 +166,9 @@
  */
 - (void)signOut
 {
+    // Clear the persistent store
+    [[PersistentStoreManager sharedClient] clearData];
+    
 	if ([self.auth.serviceProvider isEqual:kGTMOAuth2ServiceProviderGoogle])
 	{
 		// remove the token from Google's servers
@@ -197,6 +200,8 @@
 															  delegate:self
 													  finishedSelector:finishedSel];
     
+    
+    
 	// Display some html briefly before the sign-in page loads
 	NSString *html = [NSString stringWithFormat:@"<html><body style=\"background-color:#ffffff;font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight: 300;\"><div style=\"text-align:center;margin-top:64px;\">%@</div></body></html>", NSLocalizedString(@"Loading...", @"Text to show when login screen is loading.")];
 	self.viewController.initialHTMLString = html;
@@ -207,7 +212,6 @@
     self.viewController.navigationItem.leftBarButtonItem = closeButton;
     
 	UINavigationController *loginNavigationController = [[MainNavigationController alloc] initWithRootViewController:self.viewController];
-    
 	[_lastVC presentViewController:loginNavigationController animated:YES completion:nil];
 }
 

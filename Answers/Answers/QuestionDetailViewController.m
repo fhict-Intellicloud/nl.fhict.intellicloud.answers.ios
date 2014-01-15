@@ -76,6 +76,18 @@
  * @brief Sends the answer data to the service
  */
 - (IBAction)sendAnswer:(id)sender {
+    [User getAuthorizedUserWithBlock:^(User *user, NSError *error) {
+        if (!error)
+        {
+            NSLog(@"We've got our user...");
+        
+        }
+        else{
+            NSLog(@"%@", error);
+        }
+    }];
+    
+    /**
     NSDictionary *parameters = @{@"questionId": [NSString stringWithFormat:@"%ld",(long)_selectedQuestion.questionID],
                                  @"answer": _answerTextView.text,
                                  @"answererId":@"1",
@@ -87,6 +99,7 @@
             NSLog(@"%@", error.description);
         }
     }];
+     */
 }
 
 @end

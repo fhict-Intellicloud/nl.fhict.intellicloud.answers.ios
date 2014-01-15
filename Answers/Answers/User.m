@@ -27,7 +27,7 @@
         return nil;
     }
     
-    self.userID = [[attributes valueForKeyPath:@"Id"] integerValue];
+    self.userID = [[[[attributes valueForKeyPath:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue];
     self.avatarURL = ![[attributes valueForKey:@"Avatar"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"Avatar"] : nil;
     self.firstname = ![[attributes valueForKey:@"FirstName"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"FirstName"] : nil;
     self.infix = ![[attributes valueForKey:@"Infix"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"Infix"] : nil;
@@ -53,6 +53,22 @@
 + (NSURLSessionDataTask *)getAuthorizedUserWithBlock:(void (^)(User *user, NSError *error))block
 {
     return [[WebserviceManager sharedClient] GET:@"UserService.svc/users"
+                                      parameters:nil
+                                         success:^(NSURLSessionDataTask __unused *task, id JSON)
+            {
+                if (block)
+                    block([[User alloc] initWithAttributes:JSON], nil);
+            } failure:^(NSURLSessionDataTask *task, NSError *error)
+            {
+                if (block)
+                    block(nil, error);
+            }];
+}
+
+
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url block:(void (^)(User *user, NSError *error))block
+{
+    return [[WebserviceManager sharedClient] GET:url
                                       parameters:nil
                                          success:^(NSURLSessionDataTask __unused *task, id JSON)
             {

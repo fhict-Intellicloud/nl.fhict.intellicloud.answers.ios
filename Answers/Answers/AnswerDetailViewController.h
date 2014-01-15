@@ -10,6 +10,7 @@
 #import "Question.h"
 #import "WebserviceManager.h"
 #import "Answer.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface AnswerDetailViewController : UIViewController  <UISplitViewControllerDelegate>
 
