@@ -34,9 +34,7 @@
                    @[
                        @{@"title": NSLocalizedString(@"Inbox", nil), @"icon": @"", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateUpForAnswer]},  //implement predicates
                        @{@"title": NSLocalizedString(@"Open", nil), @"icon": @"MenuIconOpen", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
-                       @{@"title": NSLocalizedString(@"Rejected", nil), @"icon": @"MenuIconRejected", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
-                       @{@"title": NSLocalizedString(@"Pending", nil), @"icon": @"MenuIconPending", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
-                       @{@"title": NSLocalizedString(@"Review", nil), @"icon": @"MenuIconReview", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]}],
+                       @{@"title": NSLocalizedString(@"Closed", nil), @"icon": @"MenuIconRejected", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateClosed]}],
                    @[
                        @{@"title": NSLocalizedString(@"About IntelliCloud", nil), @"icon": @"", @"id": @"aboutViewController"}],  ///rename id to storyboard id?
                    @[

@@ -21,6 +21,12 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [super viewDidLoad];
 	
+	if(IS_IPHONE)
+	{
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
+	}
+	
 	// Set splitViewController delegate to self (for iPad splitView)
 	self.splitViewController.delegate = self;
 	
@@ -59,6 +65,37 @@
 	if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }
+	
+	// Send answer button
+	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SendAnswer", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sendAnswerClick:)];
+	self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void) keyboardDidShow:(NSNotification *)aNotification
+{
+	[self animateTextField:_answerTextbox up:YES];
+}
+
+- (void) keyboardDidHide:(NSNotification *)aNotification
+{
+	[self animateTextField:_answerTextbox up:NO];
+}
+
+- (void) animateTextField: (UITextView *) textView up: (BOOL) up
+{
+	// Movement distance of the view when keyboard appears
+    const int movementDistance = 100;
+	// Movement duration of the view when keyboard appears
+    const float movementDuration = 0.3f;
+	
+    int movement = (up ? -movementDistance : movementDistance);
+	
+	// Animate UIView when keyboard appears/disappears
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 /**
@@ -91,7 +128,7 @@
  * Action to send answer
  * @param action sender
  */
-- (IBAction)sendAnswerClick:(id)sender
+- (void)sendAnswerClick:(id)sender
 {
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Sending answer...", nil)];
     
