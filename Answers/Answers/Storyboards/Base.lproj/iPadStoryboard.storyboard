@@ -37,12 +37,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgn-vV-snd">
-                                <rect key="frame" x="0.0" y="264" width="768" height="221"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgn-vV-snd">
+                                <rect key="frame" x="0.0" y="264" width="768" height="631"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-td-arL">
-                                        <rect key="frame" x="30" y="13" width="705" height="198"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-td-arL">
+                                        <rect key="frame" x="30" y="13" width="705" height="583"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -56,33 +56,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="sMe-td-arL" secondAttribute="trailing" constant="33" id="Lxk-GC-szZ"/>
-                                    <constraint firstItem="sMe-td-arL" firstAttribute="leading" secondItem="dgn-vV-snd" secondAttribute="leading" constant="30" id="xS7-6v-C3y"/>
-                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZ1-na-sDl">
-                                <rect key="frame" x="75" y="516" width="205" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send answer">
-                                    <color key="titleColor" red="0.1176470588" green="0.53333333329999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendAnswerClick:" destination="Ds6-AH-FNR" eventType="touchUpInside" id="5w9-bf-JiP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AF-2L-opv">
-                                <rect key="frame" x="434" y="516" width="269" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Review by colleague">
-                                    <color key="titleColor" red="0.1176470588" green="0.53333333329999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="reviewByColleagueClick:" destination="Ds6-AH-FNR" eventType="touchUpInside" id="khy-ck-NhW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,7 +64,9 @@
                             <constraint firstItem="dgn-vV-snd" firstAttribute="leading" secondItem="vKC-f6-ZGF" secondAttribute="leading" id="ONf-Sw-xx9"/>
                             <constraint firstAttribute="trailing" secondItem="8fG-JP-IDO" secondAttribute="trailing" constant="65" id="W4M-Xc-ipn"/>
                             <constraint firstItem="21f-vM-TV0" firstAttribute="leading" secondItem="vKC-f6-ZGF" secondAttribute="leading" constant="36" id="WNO-gK-qa8"/>
+                            <constraint firstAttribute="bottom" secondItem="dgn-vV-snd" secondAttribute="bottom" constant="174" id="XLr-2d-7ad"/>
                             <constraint firstAttribute="trailing" secondItem="21f-vM-TV0" secondAttribute="trailing" constant="35" id="YJa-95-HRf"/>
+                            <constraint firstItem="dgn-vV-snd" firstAttribute="top" secondItem="vKC-f6-ZGF" secondAttribute="top" constant="264" id="dzy-0D-FUY"/>
                             <constraint firstAttribute="trailing" secondItem="dgn-vV-snd" secondAttribute="trailing" id="gNw-at-d3g"/>
                             <constraint firstAttribute="trailing" secondItem="mHz-fQ-Yy8" secondAttribute="trailing" constant="65" id="hct-z2-c6t"/>
                             <constraint firstItem="8fG-JP-IDO" firstAttribute="leading" secondItem="vKC-f6-ZGF" secondAttribute="leading" constant="36" id="nq5-uc-QqA"/>
@@ -103,8 +79,6 @@
                         <outlet property="answerTextbox" destination="sMe-td-arL" id="NKY-97-L8y"/>
                         <outlet property="questionLabel" destination="8fG-JP-IDO" id="0S7-HJ-gGs"/>
                         <outlet property="questionTextbox" destination="21f-vM-TV0" id="Gom-2w-m5v"/>
-                        <outlet property="reviewByColleague" destination="4AF-2L-opv" id="mmD-JC-yIO"/>
-                        <outlet property="sendAnswer" destination="kZ1-na-sDl" id="Qhk-e3-LPM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7V-Os-Qxp" userLabel="First Responder" sceneMemberID="firstResponder"/>

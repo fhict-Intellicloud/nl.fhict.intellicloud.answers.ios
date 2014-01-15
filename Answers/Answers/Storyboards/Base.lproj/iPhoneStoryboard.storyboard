@@ -194,12 +194,12 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bkd-tk-cUe">
-                                <rect key="frame" x="0.0" y="196" width="320" height="191"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bkd-tk-cUe">
+                                <rect key="frame" x="0.0" y="196" width="320" height="323"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRd-rI-vfb">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="180"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRd-rI-vfb">
+                                        <rect key="frame" x="20" y="0.0" width="280" height="303"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
@@ -215,33 +215,17 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="RRd-rI-vfb" firstAttribute="top" secondItem="Bkd-tk-cUe" secondAttribute="top" id="bPY-zV-bqL"/>
+                                    <constraint firstAttribute="bottom" secondItem="RRd-rI-vfb" secondAttribute="bottom" constant="20" id="bSy-Eb-Bih"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVT-wq-M06">
-                                <rect key="frame" x="20" y="405" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Send answer">
-                                    <color key="titleColor" red="0.074509803920000006" green="0.75294117650000003" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendAnswerClick:" destination="EJp-iB-lDo" eventType="touchUpInside" id="NRQ-fT-Vyr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omp-Nu-1m3">
-                                <rect key="frame" x="20" y="460" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Review by colleague">
-                                    <color key="titleColor" red="0.074509803920000006" green="0.75294117650000003" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="reviewByColleagueClick:" destination="EJp-iB-lDo" eventType="touchUpInside" id="N5C-lh-AlQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Bkd-tk-cUe" secondAttribute="bottom" constant="49" id="eIn-8R-nya"/>
+                            <constraint firstItem="Bkd-tk-cUe" firstAttribute="top" secondItem="85e-Mb-SNz" secondAttribute="top" constant="196" id="o0H-ph-DJE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sqo-Ds-IAw"/>
                     <connections>
@@ -250,8 +234,6 @@
                         <outlet property="answerTextbox" destination="RRd-rI-vfb" id="E3A-1p-HF1"/>
                         <outlet property="questionLabel" destination="mGV-5J-kPt" id="LwY-Si-d01"/>
                         <outlet property="questionTextbox" destination="fTw-uq-pOm" id="Nvq-VR-z1B"/>
-                        <outlet property="reviewByColleague" destination="omp-Nu-1m3" id="v2U-9A-fvz"/>
-                        <outlet property="sendAnswer" destination="IVT-wq-M06" id="6f2-dX-DLx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmy-kS-BN8" userLabel="First Responder" sceneMemberID="firstResponder"/>

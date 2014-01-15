@@ -32,7 +32,7 @@
 "Questions" = "Questions";
 
 /* No comment provided by engineer. */
-"Rejected" = "Rejected";
+"Closed" = "Closed";
 
 /* No comment provided by engineer. */
 "ReviewColleague" = "Review by colleague";
@@ -41,7 +41,7 @@
 "Reviews" = "Reviews";
 
 /* No comment provided by engineer. */
-"SendAnswer" = "Send answer";
+"SendAnswer" = "Send";
 
 /* No comment provided by engineer. */
 "Sign out" = "Sign out";
