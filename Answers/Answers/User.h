@@ -7,95 +7,96 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Source.h"
+
 #import "NSDate+Dotnet.h"
+#import "UserSource.h"
+#import "WebserviceManager.h"
 
 /**
- * An enumeration indicating the type of User.
+ * Definition of all available user types.
  */
 typedef NS_ENUM(NSInteger, UserType)
 {
-    UserTypeCustomer,            /**< Indicates the User is an customer. */
-    UserTypeEmployee,            /**< Indicates the User is an employee. */
+    UserTypeCustomer,
+    UserTypeEmployee
 };
 
 /**
- * Model representing a User retreived from the Webservice
+ * Model representing a user retrieved from the webservice
  */
 @interface User : NSObject <NSCoding>
 
 /**
-* @property id
-* @brief Gets the unique identifier of the user.
+ * @property Avatar URL.
+ * @brief URL to the user's avatar/profile image.
+ */
+@property (nonatomic, strong) NSString *avatarURL;
+
+/**
+ * @property Creation time.
+ * @brief Creation date and time of the user.
+ */
+@property (nonatomic, strong) NSDate *creationTime;
+
+/**
+ * @property First name.
+ * @brief First name of the user.
+ */
+@property (nonatomic, strong) NSString *firstName;
+
+/**
+* @property User ID.
+* @brief Unique identifier of the user.
 */
 @property (nonatomic, assign) NSInteger userID;
 
 /**
- * @property avatar url
- * @brief Gets the URL of the avatar of the user.
+ * @property Infix.
+ * @brief Infix of the user's name.
  */
-@property (nonatomic, strong) NSString * avatarURL;
+@property (nonatomic, strong) NSString *infix;
 
 /**
- * @property firdtname
- * @brief Gets the first name of the user.
+ * @property Last changed time.
+ * @brief Date and time of the last change.
  */
-@property (nonatomic, strong) NSString * firstname;
+@property (nonatomic, strong) NSDate *lastChangedTime;
 
 /**
- * @property content
- * @brief Gets the infix of the users name, e.g. 'van'.
+ * @property Last name.
+ * @brief Last name of the user.
  */
-@property (nonatomic, strong) NSString * infix;
+@property (nonatomic, strong) NSString *lastName;
 
 /**
- * @property content
- * @brief Gets the last name of the user.
- */
-@property (nonatomic, strong) NSString * lastname;
-
-/**
- * @property usertype
- * @brief Gets the type of the user. It indicates if a user is an customer or an employee.
+ * @property User type.
+ * @brief Indicates the type of user.
  */
 @property (nonatomic, assign) UserType type;
 
 /**
- * @property sources
- * @brief Gets or sets a collection of sources the user supports.
+ * @property Sources.
+ * @brief Array of sources for the user.
  */
-@property (nonatomic, strong) NSArray * sources;
+@property (nonatomic, strong) NSArray *sources;
 
 /**
- * @property creationtime
- * @brief Gets the creation date and time of the answer.
- */
-@property (nonatomic, strong) NSDate * creationTime;
-
-/**
- * @property keywords
- * @brief Gets the keywords that are linked to the user.
- */
-@property (nonatomic, strong) NSArray * keywords;
-
-/**
- * Initialized a User with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class User using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 /**
- * Retrieves the authorized user.
- * @param attributes to be parsed
- * @param attributes to be parsed
+ * @brief Retrieves the authorized user.
+ * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)getAuthorizedUserWithBlock:(void (^)(User *user, NSError *error))block;
++ (NSURLSessionDataTask *)getAuthorizedUserWithCompletionBlock:(void (^)(User *user, NSError *error))completionBlock;
 
 /**
- * Retrieves a user from a backend url.
- * @param attributes to be parsed
- * @param attributes to be parsed
+ * @brief Retrieves a user from a URL.
+ * @param Resource URL
+ * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)getWithURL:(NSString *)url block:(void (^)(User *user, NSError *error))block;
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url andCompletionBlock:(void (^)(User *user, NSError *error))completionBlock;
 
 @end

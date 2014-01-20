@@ -77,7 +77,7 @@
     __block bool state = NO;
     
     // retrieve data from webservice
-    [Question getQuestionsWithBlock:^(NSArray *questions, NSError *error)
+    [Question getQuestionsWithCompletionBlock:^(NSArray *questions, NSError *error)
     {
         // Get questions data, use copy to get NSArray from NSMutableArray
         _rawData = [questions copy];
@@ -174,20 +174,22 @@
     
     // Set author label
     NSString *authorText = NSLocalizedString(@"Unknown user", nil);
-    if (question.questionUser.firstname != nil && question.questionUser.lastname != nil)
-    {
-        // Prepare infix, add suffix space when we have a infix
-        NSString *infix = question.questionUser.infix != nil ? [NSString stringWithFormat:@" %@ ", question.questionUser.infix] : @" ";
-        authorText = [NSString stringWithFormat:@"%@%@%@", question.questionUser.firstname, infix, question.questionUser.lastname];
-    }
-    else
-    {
+    
+    
+    //if (question.questionUser.firstName != nil && question.questionUser.lastName != nil)
+    //{
+    //    // Prepare infix, add suffix space when we have a infix
+    //    NSString *infix = question.questionUser.infix != nil ? [NSString stringWithFormat:@" %@ ", question.questionUser.infix] : @" ";
+    //    authorText = [NSString stringWithFormat:@"%@%@%@", question.questionUser.firstName, infix, question.questionUser.lastName];
+    //}
+    //else
+    //{
         NSString *sourceValue = question.source.value;
         if (sourceValue != nil)
         {
             authorText = sourceValue;
         }
-    }
+    //}
     authorLabel.text = authorText;
     
     // Get time label from storyboard

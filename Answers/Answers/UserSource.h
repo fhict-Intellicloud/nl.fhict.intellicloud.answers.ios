@@ -9,25 +9,25 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Model representing the UserSource instance of a User retrieved from the Webservice
+ * Model representing a source for a user retrieved from the webservice
  */
 @interface UserSource : NSObject <NSCoding>
 
 /**
- * @property name
- * @brief Gets or sets the name for the for the given user source.
+ * @property Name.
+ * @brief Name of the source.
  */
 @property (nonatomic, strong) NSString *name;
 
 /**
- * @property value
- * @brief Gets or sets the value for the for the given user source.
+ * @property Value.
+ * @brief Value of the source.
  */
 @property (nonatomic, strong) NSString *value;
 
 /**
- * Initializes a UserSource with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class UserSource using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 

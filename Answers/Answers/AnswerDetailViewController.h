@@ -9,22 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Question.h"
 #import "WebserviceManager.h"
+#import "User.h"
 #import "Answer.h"
+#import "BaseDetailViewController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
-@interface AnswerDetailViewController : UIViewController  <UISplitViewControllerDelegate>
-
-/**
- * @property sendAnswer
- * @brief Send Answer button
- */
-@property (strong, nonatomic) IBOutlet UIButton *sendAnswer;
-
-/**
- * @property reviewByColleague
- * @brief Review by colleague button
- */
-@property (strong, nonatomic) IBOutlet UIButton *reviewByColleague;
+@interface AnswerDetailViewController : BaseDetailViewController
 
 /**
  * @property selectedQuestion
@@ -67,17 +57,5 @@
  * @brief A bar button item for the menu on iPad
  */
 @property (strong, nonatomic) UIBarButtonItem *barItem;
-
-/**
- * Action to send answer
- * @param action sender
- */
-- (IBAction)sendAnswerClick:(id)sender;
-
-/**
- * Action to review by colleague
- * @param action sender
- */
-- (IBAction)reviewByColleagueClick:(id)sender;
 
 @end

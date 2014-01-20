@@ -12,7 +12,6 @@
 #import "BaseTableViewController.h"
 #import "Question.h"
 #import "Source.h"
-#import "QuestionDetailViewController.h"
 #import "AnswerDetailViewController.h"
 #import "AuthenticationManager.h"
 

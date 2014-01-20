@@ -8,7 +8,7 @@
 
 #import "RootSplitViewController.h"
 #import "MainNavigationController.h"
-#import "EmptyDetailViewController.h"
+#import "BaseDetailViewController.h"
 
 @interface RootSplitViewController ()
 
@@ -32,7 +32,7 @@
 	
 	if(IS_IPAD)
 	{
-		EmptyDetailViewController *emptyDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"emptyDetailViewController"];
+		BaseDetailViewController *emptyDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"emptyDetailViewController"];
 		
 		// Replace detail viewController
 		MainNavigationController *navController = [[MainNavigationController alloc] initWithRootViewController:emptyDetailViewController];

@@ -1,20 +1,20 @@
 //
-//  EmptyDetailViewController.m
+//  BaseDetailViewController.m
 //  Answers
 //
 //  Created by Bram Kersten on 08-01-14.
 //  Copyright (c) 2014 IntelliCloud. All rights reserved.
 //
 
-#import "EmptyDetailViewController.h"
+#import "BaseDetailViewController.h"
 
-@interface EmptyDetailViewController ()
+@interface BaseDetailViewController ()
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 
 @end
 
-@implementation EmptyDetailViewController
+@implementation BaseDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

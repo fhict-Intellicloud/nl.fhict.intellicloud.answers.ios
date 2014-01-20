@@ -373,10 +373,10 @@
             </objects>
             <point key="canvasLocation" x="-756" y="-1114"/>
         </scene>
-        <!--Empty Detail View Controller-->
+        <!--Base Detail View Controller-->
         <scene sceneID="1JS-bd-Vat">
             <objects>
-                <viewController storyboardIdentifier="emptyDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K3b-tu-0T8" customClass="EmptyDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="emptyDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K3b-tu-0T8" customClass="BaseDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ojh-oG-Hwe"/>
                         <viewControllerLayoutGuide type="bottom" id="5KR-S3-pnl"/>
