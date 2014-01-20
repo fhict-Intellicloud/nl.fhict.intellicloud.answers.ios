@@ -10,6 +10,7 @@
 
 #import "UserSource.h"
 #import "NSDate+Dotnet.h"
+#import "Answer.h"
 #import "WebserviceManager.h"
 
 /**
@@ -27,6 +28,12 @@ typedef NS_ENUM(NSInteger, QuestionState)
  * Model representing a question retrieved from the webservice
  */
 @interface Question : NSObject <NSCoding>
+
+/**
+ * @property Answer URL.
+ * @brief Resource URL for the answer to this question.
+ */
+@property (nonatomic, strong) NSString *answerURL;
 
 /**
  * @property Content.

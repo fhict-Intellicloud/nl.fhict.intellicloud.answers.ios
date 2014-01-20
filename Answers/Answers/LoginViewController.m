@@ -30,4 +30,5 @@
 {
     [[AuthenticationManager sharedClient] pushGoogleLoginViewControllerTo:self];
 }
+
 @end

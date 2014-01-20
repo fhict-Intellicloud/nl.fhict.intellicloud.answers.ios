@@ -36,6 +36,27 @@
 }
 
 /**
+ * @brief Retrieves an answer from a URL.
+ * @param Resource URL
+ * @param Block to invoke when finished
+ */
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url
+                  andCompletionBlock:(void (^)(Answer *answer, NSError *error))completionBlock
+{
+    return [[WebserviceManager sharedClient] GET:url
+                                      parameters:nil
+                                         success:^(NSURLSessionDataTask __unused *task, id JSON)
+            {
+                if (completionBlock)
+                    completionBlock([[Answer alloc] initWithAttributes:JSON], nil);
+            } failure:^(NSURLSessionDataTask *task, NSError *error)
+            {
+                if (completionBlock)
+                    completionBlock(nil, error);
+            }];
+}
+
+/**
  * Creates an answer using an attributes dictionary.
  * @param Attributes to be used
  * @param Block to invoke when finished

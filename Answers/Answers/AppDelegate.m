@@ -14,9 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Set application background fetch interval
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-	
 	// Override point for customization after application launch.
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 	    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -44,33 +41,10 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //Dirty hack
-        [[AuthenticationManager sharedClient] checkAutentication];
+        [[AuthenticationManager sharedClient] checkAuthentication];
     });
 	
     return YES;
-}
-
-/**
- * gets called when a background fetch is performed
- */
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-    /*// Get rootviewcontroller (tabbar)
-    UITabBarController *rootViewController = (UITabBarController *)self.window.rootViewController;
-    
-    // Get tableview for selected tab
-    // We presume this matches the setup in the Storyboard
-    id childViewController = [rootViewController.selectedViewController.childViewControllers firstObject];
-    
-    // Check if table supports bakground fetching
-    if([childViewController respondsToSelector:@selector(reloadForFetchWithCompletionHandler:)])
-    {
-        // Perform fetch, completion is handled inline
-        [childViewController reloadForFetchWithCompletionHandler:completionHandler];
-    }
-    
-    // Return failed status when background fetching in unavailable for the current tab
-    completionHandler(UIBackgroundFetchResultFailed);*/
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

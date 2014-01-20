@@ -15,13 +15,6 @@
 #import "AnswerDetailViewController.h"
 #import "AuthenticationManager.h"
 
-NS_ENUM(NSUInteger, webServiceDataState)
-{
-    webServiceDataStateNoData,
-    webServiceDataStateNewData,
-    webServiceDataStateFailed
-};
-
 /**
  * TableViewCell height for question
  */
@@ -51,12 +44,6 @@ static CGFloat const QuestionTableCellHeight = 82.0f;
 - (bool)reload:(__unused id)sender;
 
 /**
- * @brief Reloads data for background fetch
- * @param UIBackgroundFetchResult completion handler block
- */
-- (void)reloadForFetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
-
-/**
  * Apply the NSPredicate to the table data and reload the table
  */
 -(void)filterTableWithPredicate;
@@ -66,10 +53,5 @@ static CGFloat const QuestionTableCellHeight = 82.0f;
  * @param predicate to use
  */
 - (void)filterTableWithPredicate:(NSPredicate *)predicate;
-
-/**
-  * PopOverController for iPad menu
- */
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
 
 @end

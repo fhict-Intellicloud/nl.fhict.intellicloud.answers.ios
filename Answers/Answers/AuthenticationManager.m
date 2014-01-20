@@ -52,7 +52,7 @@
 /**
  * @brief check if autenticated
  */
-- (BOOL) checkAutentication
+- (BOOL) checkAuthentication
 {
     BOOL auth = [_auth canAuthorize];
     
@@ -187,7 +187,7 @@
  */
 - (void)signInToGoogle
 {
-    //Make shure signed out before sign in
+    //Make sure signed out before sign in
 	[self signOut];
     
 	// Display the autentication view.
@@ -256,12 +256,28 @@
 		self.auth = auth;
         
 		// Dismiss view controllers
-		[viewController dismissViewControllerAnimated:YES completion:^
+		[viewController dismissViewControllerAnimated:NO completion:^
          {
-             [_lastVC dismissViewControllerAnimated:NO completion:nil];
+             LoginViewController *loginViewController = (LoginViewController *)_lastVC;
+             [loginViewController.loginButton setHidden:YES];
+             
+             [SVProgressHUD show];
+             
+             [User getAuthorizedUserWithCompletionBlock:^(User *user, NSError *error)
+             {
+                 [SVProgressHUD dismiss];
+                 
+                 if (!error)
+                 {
+                     [_lastVC dismissViewControllerAnimated:NO completion:nil];
+                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoggedInNotification object:self];
+                 }
+                 else
+                 {
+                     [loginViewController.loginButton setHidden:NO];
+                 }
+             }];
          }];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLoggedInNotification object:self];
     }
 }
 

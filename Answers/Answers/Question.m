@@ -23,6 +23,7 @@
     if (self != [super init] || [attributes isKindOfClass:[NSNull class]]) return nil;
     
     // Set all properties using the attributes dictionary
+    self.answerURL = ![[attributes objectForKey:@"Answer"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Answer"] : nil;
     self.content = ![[attributes objectForKey:@"Content"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Content"] : nil;
     self.creationTime = ![[attributes objectForKey:@"CreationTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"CreationTime"]] : nil;
     self.questionID = ![[attributes objectForKey:@"Id"] isKindOfClass:[NSNull class]] ? [[[[attributes objectForKey:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue] : 0;
@@ -79,6 +80,7 @@
     // Instantiate a new object and decode the values using the decoder
     if (self == [super init])
     {
+        self.answerURL = [aDecoder decodeObjectForKey:@"answerURL"];
         self.content = [aDecoder decodeObjectForKey:@"content"];
         self.creationTime = [aDecoder decodeObjectForKey:@"creationTime"];
         self.questionID = [aDecoder decodeIntegerForKey:@"questionId"];
@@ -101,6 +103,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     // Encode the values using the coder
+    [aCoder encodeObject:self.answerURL forKey:@"answerURL"];
     [aCoder encodeObject:self.content forKey:@"content"];
     [aCoder encodeObject:self.creationTime forKey:@"creationTime"];
     [aCoder encodeInteger:self.questionID forKey:@"questionId"];

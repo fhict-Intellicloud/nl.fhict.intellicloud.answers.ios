@@ -11,9 +11,9 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 
 #import "MainNavigationController.h"
-#import "Question.h"
-
-static NSString *const kLoggedInNotification = @"LoggedInNotification";
+#import "User.h"
+#import "SVProgressHUD.h"
+#import "LoginViewController.h"
 
 static NSString *const kKeychainItemName = @"IntelliCloud OAuth2 Google Plus";
 
@@ -79,7 +79,7 @@ static NSString *const kShouldSaveInKeychainKey = @"shouldSaveInKeychain";
 /**
  * @brief check if autenticated
  */
-- (BOOL) checkAutentication;
+- (BOOL) checkAuthentication;
 
 /**
  * @brief get accessToken

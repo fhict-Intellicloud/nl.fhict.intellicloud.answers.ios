@@ -39,12 +39,7 @@
     
     _questionTextbox.text = _selectedQuestion.content;
 
-    //Add a inputAccessory to hide the keyboard when typing an answer.
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:_answerTextbox action:@selector(resignFirstResponder)];
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    toolbar.items = [NSArray arrayWithObject:barButton];
-	toolbar.tintColor = [UIColor navigationBarTintColor];
-    _answerTextbox.inputAccessoryView = toolbar;
+    
     
     //Set answerTextView delegate to self to mimic placeholder effect
     _answerTextbox.delegate = self;
@@ -56,9 +51,30 @@
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }
 	
-	// Send answer button
-	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SendAnswer", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sendAnswerClick)];
-	self.navigationItem.rightBarButtonItem = anotherButton;
+    if (_selectedQuestion.state == QuestionStateClosed)
+    {
+        [_answerPlaceholderLabel setHidden:YES];
+        [_answerTextbox setEditable:NO];
+        
+        [Answer getWithURL:_selectedQuestion.answerURL andCompletionBlock:^(Answer *answer, NSError *error)
+        {
+            if (!error)
+                [_answerTextbox setText:answer.content];
+        }];
+    }
+    else
+	{
+        //Add a inputAccessory to hide the keyboard when typing an answer.
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:_answerTextbox action:@selector(resignFirstResponder)];
+        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolbar.items = [NSArray arrayWithObject:barButton];
+        toolbar.tintColor = [UIColor navigationBarTintColor];
+        _answerTextbox.inputAccessoryView = toolbar;
+        
+        // Send answer button
+        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SendAnswer", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sendAnswerClick)];
+        self.navigationItem.rightBarButtonItem = anotherButton;
+    }
 }
 
 - (void) keyboardDidShow:(NSNotification *)aNotification
@@ -134,6 +150,7 @@
                 if (!error)
                 {
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Answer sent", nil)];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kAnswerCreatedNotification object:nil];
                     [self.navigationController popViewControllerAnimated:YES];
                 }
                 else

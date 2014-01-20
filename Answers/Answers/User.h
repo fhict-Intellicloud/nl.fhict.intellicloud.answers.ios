@@ -97,6 +97,7 @@ typedef NS_ENUM(NSInteger, UserType)
  * @param Resource URL
  * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)getWithURL:(NSString *)url andCompletionBlock:(void (^)(User *user, NSError *error))completionBlock;
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url
+                  andCompletionBlock:(void (^)(User *user, NSError *error))completionBlock;
 
 @end

@@ -476,10 +476,8 @@
 		C6CB6D70183E110000D34039 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				257EE4621883E62100F23FB3 /* RootSplitViewController.h */,
-				257EE4631883E62100F23FB3 /* RootSplitViewController.m */,
-				C6CE2B51184DE42100C27EB4 /* Menu */,
 				C608247B184D29D30060990A /* Base */,
+				C6CE2B51184DE42100C27EB4 /* Menu */,
 				C6CB6D67183E08FA00D34039 /* QuestionsTableViewController.h */,
 				C6CB6D68183E08FA00D34039 /* QuestionsTableViewController.m */,
 				DAE844F4184F4F2600BCF896 /* LoginViewController.h */,
@@ -497,6 +495,8 @@
 		C6CE2B51184DE42100C27EB4 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				257EE4621883E62100F23FB3 /* RootSplitViewController.h */,
+				257EE4631883E62100F23FB3 /* RootSplitViewController.m */,
 				C6581CA8184CA20E00600009 /* MenuViewController.h */,
 				C6581CA9184CA20E00600009 /* MenuViewController.m */,
 				C6CB6D7D183E397F00D34039 /* MainNavigationController.h */,
