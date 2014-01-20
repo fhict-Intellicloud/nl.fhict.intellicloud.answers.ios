@@ -8,76 +8,72 @@
 
 #import "User.h"
 
-#import "WebserviceManager.h"
-
 /**
- * Model representing a User retreived from the Webservice
+ * Model representing a user retrieved from the webservice
  */
 @implementation User
 
 /**
- * Initialized a User with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class User using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {
-    self = [super init];
-    if (!self || [attributes isKindOfClass:[NSNull class]])
-    {
-        return nil;
-    }
+    // Initialize the base object
+    if (self != [super init] || [attributes isKindOfClass:[NSNull class]]) return nil;
     
-    self.userID = [[[[attributes valueForKeyPath:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue];
-    self.avatarURL = ![[attributes valueForKey:@"Avatar"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"Avatar"] : nil;
-    self.firstname = ![[attributes valueForKey:@"FirstName"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"FirstName"] : nil;
-    self.infix = ![[attributes valueForKey:@"Infix"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"Infix"] : nil;
-    self.lastname = ![[attributes valueForKey:@"LastName"] isKindOfClass:[NSNull class]] ? [attributes valueForKey:@"LastName"] : nil;
-    NSMutableArray *tempSources = [[NSMutableArray alloc] init];
-    for (NSDictionary *attr in [attributes valueForKey:@"Sources"])
-    {
-        Source *leSource = [[Source alloc] initWithAttributes:attr];
-        [tempSources addObject:leSource];
-    }
-    self.sources = [tempSources copy];
-    self.type = [[attributes valueForKey:@"Type"] integerValue];
-    self.creationTime = [NSDate dateFromDotnetDate:[attributes valueForKey:@"CreationTime"]];
+    // Set all properties using the attributes dictionary
+    self.avatarURL = ![[attributes objectForKey:@"Avatar"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Avatar"] : nil;
+    self.creationTime = ![[attributes objectForKey:@"CreationTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"CreationTime"]] : nil;
+    self.firstName = ![[attributes objectForKey:@"FirstName"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"FirstName"] : nil;
+    self.userID = ![[attributes objectForKey:@"Id"] isKindOfClass:[NSNull class]] ? [[[[attributes objectForKey:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue] : 0;
+    self.infix = ![[attributes objectForKey:@"Infix"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Infix"] : nil;
+    self.lastChangedTime = ![[attributes objectForKey:@"LastChangedTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"LastChangedTime"]] : nil;
+    self.lastName = ![[attributes objectForKey:@"LastName"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"LastName"] : nil;
+    self.type = ![[attributes objectForKey:@"UserType"] isKindOfClass:[NSNull class]] ? [[attributes objectForKey:@"UserType"] integerValue] : 0;
     
+    // Set all sources using the attributes dictionary
+    NSMutableArray *mutableSources = [[NSMutableArray alloc] init];
+    if (![[attributes objectForKey:@"Sources"] isKindOfClass:[NSNull class]])
+    {
+        for (NSDictionary *sourceAttributes in [attributes objectForKey:@"Sources"])
+        {
+            UserSource *source = [[UserSource alloc] initWithAttributes:sourceAttributes];
+            [mutableSources addObject:source];
+        }
+    }
+    self.sources = mutableSources;
+    
+    // Return the initialized object
     return self;
 }
 
 /**
- * Retrieves the authorized user.
- * @param attributes to be parsed
- * @param attributes to be parsed
+ * @brief Retrieves the authorized user.
+ * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)getAuthorizedUserWithBlock:(void (^)(User *user, NSError *error))block
++ (NSURLSessionDataTask *)getAuthorizedUserWithCompletionBlock:(void (^)(User *user, NSError *error))completionBlock
 {
-    return [[WebserviceManager sharedClient] GET:@"UserService.svc/users"
-                                      parameters:nil
-                                         success:^(NSURLSessionDataTask __unused *task, id JSON)
-            {
-                if (block)
-                    block([[User alloc] initWithAttributes:JSON], nil);
-            } failure:^(NSURLSessionDataTask *task, NSError *error)
-            {
-                if (block)
-                    block(nil, error);
-            }];
+    return [User getWithURL:@"UserService.svc/users" andCompletionBlock:completionBlock];
 }
 
-
-+ (NSURLSessionDataTask *)getWithURL:(NSString *)url block:(void (^)(User *user, NSError *error))block
+/**
+ * @brief Retrieves a user from a URL.
+ * @param Resource URL
+ * @param Block to invoke when finished
+ */
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url andCompletionBlock:(void (^)(User *user, NSError *error))completionBlock
 {
     return [[WebserviceManager sharedClient] GET:url
                                       parameters:nil
-                                         success:^(NSURLSessionDataTask __unused *task, id JSON)
+            success:^(NSURLSessionDataTask __unused *task, id JSON)
             {
-                if (block)
-                    block([[User alloc] initWithAttributes:JSON], nil);
+                if (completionBlock)
+                    completionBlock([[User alloc] initWithAttributes:JSON], nil);
             } failure:^(NSURLSessionDataTask *task, NSError *error)
             {
-                if (block)
-                    block(nil, error);
+                if (completionBlock)
+                    completionBlock(nil, error);
             }];
 }
 
@@ -89,14 +85,15 @@
     // Instantiate a new object and decode the values using the decoder
     if (self == [super init])
     {
-        self.userID = [aDecoder decodeIntegerForKey:@"Id"];
-        self.avatarURL = [aDecoder decodeObjectForKey:@"Avatar"];
-        self.firstname = [aDecoder decodeObjectForKey:@"FirstName"];
-        self.infix = [aDecoder decodeObjectForKey:@"Infix"];
-        self.lastname = [aDecoder decodeObjectForKey:@"LastName"];
-        self.sources = [aDecoder decodeObjectForKey:@"Sources"];
-        self.type = [aDecoder decodeIntegerForKey:@"Type"];
-        self.creationTime = [aDecoder decodeObjectForKey:@"CreationTime"];
+        self.avatarURL = [aDecoder decodeObjectForKey:@"avatarURL"];
+        self.creationTime = [aDecoder decodeObjectForKey:@"creationTime"];
+        self.firstName = [aDecoder decodeObjectForKey:@"firstName"];
+        self.userID = [aDecoder decodeIntegerForKey:@"userID"];
+        self.infix = [aDecoder decodeObjectForKey:@"infix"];
+        self.lastChangedTime = [aDecoder decodeObjectForKey:@"lastChangedTime"];
+        self.lastName = [aDecoder decodeObjectForKey:@"lastName"];
+        self.type = [aDecoder decodeIntegerForKey:@"type"];
+        self.sources = [aDecoder decodeObjectForKey:@"sources"];
     }
     
     // Return the instantiated object
@@ -109,14 +106,15 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     // Encode the values using the coder
-    [aCoder encodeInteger:self.userID forKey:@"Id"];
-    [aCoder encodeObject:self.avatarURL forKey:@"Avatar"];
-    [aCoder encodeObject:self.firstname forKey:@"FirstName"];
-    [aCoder encodeObject:self.infix forKey:@"Infix"];
-    [aCoder encodeObject:self.lastname forKey:@"LastName"];
-    [aCoder encodeObject:self.sources forKey:@"Sources"];
-    [aCoder encodeInteger:self.type forKey:@"Type"];
-    [aCoder encodeObject:self.creationTime forKey:@"CreationTime"];
+    [aCoder encodeObject:self.avatarURL forKey:@"avatarURL"];
+    [aCoder encodeObject:self.creationTime forKey:@"creationTime"];
+    [aCoder encodeObject:self.firstName forKey:@"firstName"];
+    [aCoder encodeInteger:self.userID forKey:@"userID"];
+    [aCoder encodeObject:self.infix forKey:@"infix"];
+    [aCoder encodeObject:self.lastChangedTime forKey:@"lastChangedTime"];
+    [aCoder encodeObject:self.lastName forKey:@"lastName"];
+    [aCoder encodeInteger:self.type forKey:@"type"];
+    [aCoder encodeObject:self.sources forKey:@"sources"];
 }
 
 @end

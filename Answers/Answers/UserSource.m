@@ -8,23 +8,25 @@
 
 #import "UserSource.h"
 
+/**
+ * Model representing a source for a user retrieved from the webservice
+ */
 @implementation UserSource
 
 /**
- * Initializes a UserSource with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class UserSource using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {
-    self = [super init];
-    if (!self || [attributes isKindOfClass:[NSNull class]])
-    {
-        return nil;
-    }
+    // Initialize the base object
+    if (self != [super init] || [attributes isKindOfClass:[NSNull class]]) return nil;
     
-    self.name = [attributes valueForKey:@"Name"];
-    self.value = [attributes valueForKey:@"Value"];
+    // Set all properties using the attributes dictionary
+    self.name = ![[attributes objectForKey:@"Name"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Name"] : nil;
+    self.value = ![[attributes objectForKey:@"Value"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Value"] : nil;
     
+    // Return the initialized object
     return self;
 }
 
@@ -36,8 +38,8 @@
     // Instantiate a new object and decode the values using the decoder
     if (self == [super init])
     {
-        self.name = [aDecoder decodeObjectForKey:@"Name"];
-        self.value = [aDecoder decodeObjectForKey:@"Value"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.value = [aDecoder decodeObjectForKey:@"value"];
     }
     
     // Return the instantiated object
@@ -50,8 +52,8 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     // Encode the values using the coder
-    [aCoder encodeObject:self.name forKey:@"Name"];
-    [aCoder encodeObject:self.value forKey:@"Value"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.value forKey:@"value"];
 }
 
 @end

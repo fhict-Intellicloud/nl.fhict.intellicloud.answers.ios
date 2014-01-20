@@ -32,9 +32,9 @@
     // Setup table data
     _menuItems = @[
                    @[
-                       @{@"title": NSLocalizedString(@"Inbox", nil), @"icon": @"", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateUpForAnswer]},  //implement predicates
-                       @{@"title": NSLocalizedString(@"Open", nil), @"icon": @"MenuIconOpen", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateOpen]},
-                       @{@"title": NSLocalizedString(@"Closed", nil), @"icon": @"MenuIconRejected", @"predicate": [NSPredicate predicateWithFormat:@"questionState == %d", QuestionStateClosed]}],
+                       @{@"title": NSLocalizedString(@"Inbox", nil), @"icon": @"", @"predicate": [NSPredicate predicateWithFormat:@"state == %d", QuestionStateUpForAnswer]},  //implement predicates
+                       @{@"title": NSLocalizedString(@"Open", nil), @"icon": @"MenuIconOpen", @"predicate": [NSPredicate predicateWithFormat:@"state == %d", QuestionStateOpen]},
+                       @{@"title": NSLocalizedString(@"Closed", nil), @"icon": @"MenuIconRejected", @"predicate": [NSPredicate predicateWithFormat:@"state == %d", QuestionStateClosed]}],
                    @[
                        @{@"title": NSLocalizedString(@"About IntelliCloud", nil), @"icon": @"", @"id": @"aboutViewController"}],  ///rename id to storyboard id?
                    @[
@@ -94,12 +94,7 @@
 
 - (void)loadUserInfo
 {
-    NSLog(@"Load user info");
-    
-    // Reset
-    
-    
-    [User getAuthorizedUserWithBlock:^(User *user, NSError *error)
+    [User getAuthorizedUserWithCompletionBlock:^(User *user, NSError *error)
     {
         if (!error)
         {
@@ -107,11 +102,11 @@
             
             // Set username label
             NSString *authorText = NSLocalizedString(@"Unknown user", nil);
-            if (user.firstname != nil && user.lastname != nil)
+            if (user.firstName != nil && user.lastName != nil)
             {
                 // Prepare infix, add suffix space when we have a infix
                 NSString *infix = user.infix != nil ? [NSString stringWithFormat:@" %@ ", user.infix] : @" ";
-                authorText = [NSString stringWithFormat:@"%@%@%@", user.firstname, infix, user.lastname];
+                authorText = [NSString stringWithFormat:@"%@%@%@", user.firstName, infix, user.lastName];
             }
             
             _currentUserLabel.text = authorText;

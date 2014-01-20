@@ -8,48 +8,51 @@
 
 #import "Answer.h"
 
+/**
+ * Model representing an answer retrieved from the webservice
+ */
 @implementation Answer
 
 /**
- * Initialized a Answer with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class Answer using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {
-    self = [super init];
-    if (!self || [attributes isKindOfClass:[NSNull class]])
-    {
-        return nil;
-    }
+    // Initialize the base object
+    if (self != [super init] || [attributes isKindOfClass:[NSNull class]]) return nil;
     
-    self.answerID = [[attributes valueForKeyPath:@"Id"] integerValue];
-    self.content = [attributes valueForKey:@"Content"];
-    self.languageDefinition = [[LanguageDefinition alloc] initWithAttributes:[attributes valueForKey:@"LanguageDefinition"]];
-    self.user = [[User alloc] initWithAttributes:[attributes valueForKey:@"User"]];
-    self.answerState = [[attributes valueForKey:@"AnswerState"] integerValue];
-    self.creationTime = [NSDate dateFromDotnetDate:[attributes valueForKey:@"CreationTime"]];
-    
+    // Set all properties using the attributes dictionary
+    self.state = ![[attributes objectForKey:@"AnswerState"] isKindOfClass:[NSNull class]] ? [[attributes objectForKey:@"AnswerState"] integerValue] : 0;
+    self.content = ![[attributes objectForKey:@"Content"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Content"] : nil;
+    self.creationTime = ![[attributes objectForKey:@"CreationTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"CreationTime"]] : nil;
+    self.answerID = ![[attributes objectForKey:@"Id"] isKindOfClass:[NSNull class]] ? [[[[attributes objectForKey:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue] : 0;
+    self.isPrivate = ![[attributes objectForKey:@"IsPrivate"] isKindOfClass:[NSNull class]] ? [[attributes objectForKey:@"IsPrivate"] boolValue] : NO;
+    self.language = ![[attributes objectForKey:@"Language"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Language"] : nil;
+    self.lastChangedTime = ![[attributes objectForKey:@"LastChangedTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"LastChangedTime"]] : nil;
+        
+    // Return the initialized object
     return self;
 }
 
 /**
- * Sends a answer with the WebserviceManager SharedInstance.
- * tested with local service waiting for real implementation
- * @param parameters: parameters for the service
+ * Creates an answer using an attributes dictionary.
+ * @param Attributes to be used
+ * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)postAnswerWithParameters:(NSDictionary*) parameters withBlock: (void (^)(NSError *error))block
++ (NSURLSessionDataTask *)createAnswerWithAttributes:(NSDictionary*)attributes andCompletionBlock:(void (^)(NSError *error))completionBlock
 {
     return [[WebserviceManager sharedClient] POST:@"AnswerService.svc/answers"
-                                       parameters:parameters
+                                       parameters:attributes
     success:^(NSURLSessionDataTask *task, id responseObject)
     {
-      if (block)
-          block(nil);
+        if (completionBlock)
+            completionBlock(nil);
     }
     failure:^(NSURLSessionDataTask *task, NSError *error)
     {
-      if (block)
-          block(error);
+        if (completionBlock)
+            completionBlock(error);
     }];
 }
 
@@ -61,12 +64,13 @@
     // Instantiate a new object and decode the values using the decoder
     if (self == [super init])
     {
-        self.answerID = [aDecoder decodeIntegerForKey:@"Id"];
-        self.content = [aDecoder decodeObjectForKey:@"Content"];
-        self.languageDefinition = [aDecoder decodeObjectForKey:@"LanguageDefinition"];
-        self.user = [aDecoder decodeObjectForKey:@"User"];
-        self.answerState = [aDecoder decodeIntegerForKey:@"AnswerState"];
-        self.creationTime = [aDecoder decodeObjectForKey:@"CreationTime"];
+        self.state = [aDecoder decodeIntegerForKey:@"state"];
+        self.content = [aDecoder decodeObjectForKey:@"content"];
+        self.creationTime = [aDecoder decodeObjectForKey:@"creationTime"];
+        self.answerID = [aDecoder decodeIntegerForKey:@"answerId"];
+        self.isPrivate = [aDecoder decodeBoolForKey:@"isPrivate"];
+        self.language = [aDecoder decodeObjectForKey:@"language"];
+        self.lastChangedTime = [aDecoder decodeObjectForKey:@"lastChangedTime"];
     }
     
     // Return the instantiated object
@@ -79,12 +83,13 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     // Encode the values using the coder
-    [aCoder encodeInteger:self.answerID forKey:@"Id"];
-    [aCoder encodeObject:self.content forKey:@"Content"];
-    [aCoder encodeObject:self.languageDefinition forKey:@"LanguageDefinition"];
-    [aCoder encodeObject:self.user forKey:@"User"];
-    [aCoder encodeInteger:self.answerState forKey:@"AnswerState"];
-    [aCoder encodeObject:self.creationTime forKey:@"CreationTime"];
+    [aCoder encodeInteger:self.state forKey:@"state"];
+    [aCoder encodeObject:self.content forKey:@"content"];
+    [aCoder encodeObject:self.creationTime forKey:@"creationTime"];
+    [aCoder encodeInteger:self.answerID forKey:@"answerId"];
+    [aCoder encodeBool:self.isPrivate forKey:@"isPrivate"];
+    [aCoder encodeObject:self.language forKey:@"language"];
+    [aCoder encodeObject:self.lastChangedTime forKey:@"lastChangedTime"];
 }
 
 @end

@@ -9,42 +9,40 @@
 #import "Question.h"
 
 /**
- * Model for representing a Question retreived from the Webservice
+ * Model representing a question retrieved from the webservice
  */
 @implementation Question
 
 /**
- * Initialized a User with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
+ * @brief Initializes an object of class Question using an attributes dictionary.
+ * @param Attributes to be used
  */
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {
-    self = [super init];
-    if (!self || [attributes isKindOfClass:[NSNull class]])
-    {
-        return nil;
-    }
+    // Initialize the base object
+    if (self != [super init] || [attributes isKindOfClass:[NSNull class]]) return nil;
     
-    self.questionID = [[[[attributes valueForKeyPath:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue];
-    self.content = [attributes valueForKey:@"Content"];
+    // Set all properties using the attributes dictionary
+    self.content = ![[attributes objectForKey:@"Content"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Content"] : nil;
+    self.creationTime = ![[attributes objectForKey:@"CreationTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"CreationTime"]] : nil;
+    self.questionID = ![[attributes objectForKey:@"Id"] isKindOfClass:[NSNull class]] ? [[[[attributes objectForKey:@"Id"] componentsSeparatedByString:@"/"] lastObject] integerValue] : 0;
+    self.isPrivate = ![[attributes objectForKey:@"IsPrivate"] isKindOfClass:[NSNull class]] ? [[attributes objectForKey:@"IsPrivate"] boolValue] : NO;
+    self.language = ![[attributes objectForKey:@"Language"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Language"] : nil;
+    self.lastChangedTime = ![[attributes objectForKey:@"LastChangedTime"] isKindOfClass:[NSNull class]] ? [NSDate dateFromDotnetDate:[attributes objectForKey:@"LastChangedTime"]] : nil;
+    self.state = ![[attributes objectForKey:@"QuestionState"] isKindOfClass:[NSNull class]] ? [[attributes objectForKey:@"QuestionState"] integerValue] : 0;
+    self.source = ![[attributes objectForKey:@"Source"] isKindOfClass:[NSNull class]] ? [[UserSource alloc] initWithAttributes:[attributes objectForKey:@"Source"]] : nil;
+    self.sourcePostID = ![[attributes objectForKey:@"SourcePostId"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"SourcePostId"] : nil;
+    self.title = ![[attributes objectForKey:@"Title"] isKindOfClass:[NSNull class]] ? [attributes objectForKey:@"Title"] : nil;
     
-    [User getWithURL:[attributes valueForKey:@"User"] block:^(User *user, NSError *error) {
-        self.questionUser = user;
-    }];
-    
-    self.questionState = [[attributes valueForKey:@"QuestionState"] integerValue];
-    self.source = [[UserSource alloc] initWithAttributes:[attributes valueForKey:@"Source"]];
-    self.creationTime = [NSDate dateFromDotnetDate:[attributes valueForKey:@"CreationTime"]];
-    
+    // Return the initialized object
     return self;
 }
 
 /**
- * Initialized a User with attributes from a (JSON) dictionary.
- * @param attributes to be parsed
- * @param attributes to be parsed
+ * @brief Retrieves all questions.
+ * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)getQuestionsWithBlock:(void (^)(NSArray *questions, NSError *error))block
++ (NSURLSessionDataTask *)getQuestionsWithCompletionBlock:(void (^)(NSArray *questions, NSError *error))completionBlock
 {
     return [[WebserviceManager sharedClient] GET:@"QuestionService.svc/questions"
                                       parameters:nil
@@ -57,23 +55,18 @@
             [mutableQuestions addObject:question];
         }
         
-        // Create a non-mutable array from the parsed questions
-        NSArray *questions = [NSArray arrayWithArray:mutableQuestions];
-        
         // Persist the retrieved questions
-        [[PersistentStoreManager sharedClient].persistentStoreData setQuestions:questions];
+        [[PersistentStoreManager sharedClient].persistentStoreData setQuestions:mutableQuestions];
         
-        if (block)
-        {
-            block(questions, nil);
-        }
+        if (completionBlock)
+            completionBlock(mutableQuestions, nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error)
     {
-        if (block)
+        if (completionBlock)
         {
             // Return persisted (cached) questions if the request failed
             PersistentStoreData *persistentStoreData = [PersistentStoreManager sharedClient].persistentStoreData;
-            block(persistentStoreData.questions, error);
+            completionBlock(persistentStoreData.questions, error);
         }
     }];
 }
@@ -86,12 +79,16 @@
     // Instantiate a new object and decode the values using the decoder
     if (self == [super init])
     {
-        self.questionID = [aDecoder decodeIntegerForKey:@"Id"];
-        self.content = [aDecoder decodeObjectForKey:@"Content"];
-        self.questionUser = [aDecoder decodeObjectForKey:@"User"];
-        self.questionState = [aDecoder decodeIntegerForKey:@"QuestionState"];
-        self.source = [aDecoder decodeObjectForKey:@"Source"];
-        self.creationTime = [aDecoder decodeObjectForKey:@"CreationTime"];
+        self.content = [aDecoder decodeObjectForKey:@"content"];
+        self.creationTime = [aDecoder decodeObjectForKey:@"creationTime"];
+        self.questionID = [aDecoder decodeIntegerForKey:@"questionId"];
+        self.isPrivate = [aDecoder decodeBoolForKey:@"isPrivate"];
+        self.language = [aDecoder decodeObjectForKey:@"language"];
+        self.lastChangedTime = [aDecoder decodeObjectForKey:@"lastChangedTime"];
+        self.state = [aDecoder decodeIntegerForKey:@"state"];
+        self.source = [aDecoder decodeObjectForKey:@"source"];
+        self.sourcePostID = [aDecoder decodeObjectForKey:@"sourcePostID"];
+        self.title = [aDecoder decodeObjectForKey:@"title"];
     }
     
     // Return the instantiated object
@@ -104,12 +101,16 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     // Encode the values using the coder
-    [aCoder encodeInteger:self.questionID forKey:@"Id"];
-    [aCoder encodeObject:self.content forKey:@"Content"];
-    [aCoder encodeObject:self.questionUser forKey:@"User"];
-    [aCoder encodeInteger:self.questionState forKey:@"QuestionState"];
-    [aCoder encodeObject:self.source forKey:@"Source"];
-    [aCoder encodeObject:self.creationTime forKey:@"CreationTime"];
+    [aCoder encodeObject:self.content forKey:@"content"];
+    [aCoder encodeObject:self.creationTime forKey:@"creationTime"];
+    [aCoder encodeInteger:self.questionID forKey:@"questionId"];
+    [aCoder encodeBool:self.isPrivate forKey:@"isPrivate"];
+    [aCoder encodeObject:self.language forKey:@"language"];
+    [aCoder encodeObject:self.lastChangedTime forKey:@"lastChangedTime"];
+    [aCoder encodeInteger:self.state forKey:@"state"];
+    [aCoder encodeObject:self.source forKey:@"source"];
+    [aCoder encodeObject:self.sourcePostID forKey:@"sourcePostID"];
+    [aCoder encodeObject:self.title forKey:@"title"];
 }
 
 @end

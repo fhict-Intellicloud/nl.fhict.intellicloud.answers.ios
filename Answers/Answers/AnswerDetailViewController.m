@@ -10,8 +10,6 @@
 
 @interface AnswerDetailViewController () <UITextViewDelegate>
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-
 @end
 
 @implementation AnswerDetailViewController
@@ -40,15 +38,7 @@
     _answerLabel.text = [NSLocalizedString(@"Answer", nil) uppercaseString];
     
     _questionTextbox.text = _selectedQuestion.content;
-	
-    //Localize the sendAnswer button and set the styling color
-    [_sendAnswer setTitle:NSLocalizedString(@"SendAnswer", nil) forState:UIControlStateNormal];
-    [_sendAnswer setTitleColor:[UIColor buttonLabelTextColor] forState:UIControlStateNormal];
-    
-    //Localize the reviewByColleague button and set the styling color
-    [_reviewByColleague setTitle:NSLocalizedString(@"ReviewColleague", nil) forState:UIControlStateNormal];
-    [_reviewByColleague setTitleColor:[UIColor buttonLabelTextColor] forState:UIControlStateNormal];
-    
+
     //Add a inputAccessory to hide the keyboard when typing an answer.
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:_answerTextbox action:@selector(resignFirstResponder)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -67,7 +57,7 @@
     }
 	
 	// Send answer button
-	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SendAnswer", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sendAnswerClick:)];
+	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SendAnswer", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sendAnswerClick)];
 	self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
@@ -128,19 +118,19 @@
  * Action to send answer
  * @param action sender
  */
-- (void)sendAnswerClick:(id)sender
+- (void)sendAnswerClick
 {
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Sending answer...", nil)];
     
-    [User getAuthorizedUserWithBlock:^(User *user, NSError *error) {
+    [User getAuthorizedUserWithCompletionBlock:^(User *user, NSError *error) {
         if (!error)
         {
-            NSDictionary *parameters = @{@"questionId": [NSString stringWithFormat:@"%li", (long)_selectedQuestion.questionID],
+            NSDictionary *attributes = @{@"questionId": [NSString stringWithFormat:@"%li", (long)_selectedQuestion.questionID],
                                          @"answer": _answerTextbox.text,
                                          @"answererId":[NSString stringWithFormat:@"%li", (long)user.userID],
                                          @"answerState":@"0"};
             
-            [Answer postAnswerWithParameters:parameters withBlock:^(NSError* error){
+            [Answer createAnswerWithAttributes:attributes andCompletionBlock:^(NSError* error){
                 if (!error)
                 {
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Answer sent", nil)];
@@ -157,31 +147,6 @@
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed to send answer", nil)];
         }
     }];
-}
-
-/**
- * Action to review by colleague
- * @param action sender
- */
-- (IBAction)reviewByColleagueClick:(id)sender
-{
-    //todo: add action for colleague review
-}
-#pragma mark - Split view
-
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
-{
-	// Bar button item for menu
-	barButtonItem.title = NSLocalizedString(@"Menu", @"Menu");
-	[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-	self.masterPopoverController = popoverController;
-}
- 
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-	// Called when the view is shown again in the split view, invalidating the button and popover controller.
-	[self.navigationItem setLeftBarButtonItem:nil animated:YES];
-	self.masterPopoverController = nil;
 }
 
 @end
