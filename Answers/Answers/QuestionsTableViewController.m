@@ -37,16 +37,23 @@
     TTTColorFormatter *cf = [[TTTColorFormatter alloc] init];
     self.tableView.backgroundColor = [cf colorFromHexadecimalString:@"#fcfcfc"];
     
-    // Set title
-    self.title = NSLocalizedString(@"Questions", nil);
-    
     // Static height for tableviewcell, see storyboard
     self.tableView.rowHeight = QuestionTableCellHeight;
+    
+    // Set default title and predicate
+    self.title = NSLocalizedString(@"Open", nil);
+    _predicate = [NSPredicate predicateWithFormat:@"state == %d", QuestionStateOpen];
+    
+    // Add observer for handling logged in notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoggedInNotification) name:kLoggedInNotification object:nil];
+    
+    // Add observer for handling answer created notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:) name:kAnswerCreatedNotification object:nil];
     
     if (IS_IPHONE)
     {
         //Present LoginViewController if not logged in
-        if (![[AuthenticationManager sharedClient] checkAutentication])
+        if (![[AuthenticationManager sharedClient] checkAuthentication])
         {
             [self.navigationController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"] animated:NO completion:nil];
         }
@@ -56,15 +63,13 @@
     PersistentStoreData *persistentStoreData = [PersistentStoreManager sharedClient].persistentStoreData;
     _rawData = [NSMutableArray arrayWithArray:persistentStoreData.questions];
     [self filterTableWithPredicate];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setDefaultViewTitle) name:kLoggedInNotification object:nil];
 }
 
-
-- (void)setDefaultViewTitle
+- (void)handleLoggedInNotification
 {
-    // Set title
-    self.title = NSLocalizedString(@"Questions", nil);
+    // Set default title and predicate
+    self.title = NSLocalizedString(@"Open", nil);
+    _predicate = [NSPredicate predicateWithFormat:@"state == %d", QuestionStateOpen];
     [self reload:nil];
 }
 
@@ -89,29 +94,9 @@
         
         [self.refreshControl endRefreshing];
     }];
-
-    //_rawData = [Question getDummyData];
-    //_tableData = [_rawData filteredArrayUsingPredicate:_predicate];
-    //[self.tableView reloadData];
-    
     
     return state;
 }
-
-/**
- * @brief Reloads data for background fetch
- */
-/*- (void)reloadForFetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler
-{
-    UIBackgroundFetchResult result = UIBackgroundFetchResultFailed;
-    
-    if ([self reload:nil])
-    {
-        result = UIBackgroundFetchResultNewData;
-    }
-    
-    completionHandler(result);
-}*/
 
 #pragma mark - Table view data source
 
@@ -218,11 +203,11 @@
 	{
 		// Get reference to answerDetailViewController
 		AnswerDetailViewController *answerDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"answerDetailViewController"];
-		
+        
 		// Get reference to question
 		Question *selectedQuestion = (Question *)[_tableData objectAtIndex:self.tableView.indexPathForSelectedRow.row];
 		answerDetailViewController.selectedQuestion = selectedQuestion;
-		
+        
 		// Replace detail viewController
 		MainNavigationController *navController = [[MainNavigationController alloc] initWithRootViewController:answerDetailViewController];
 		
@@ -255,11 +240,6 @@
 		Question *selectedQuestion = (Question *)[_tableData objectAtIndex:self.tableView.indexPathForSelectedRow.row];
 		questionDetailController.selectedQuestion = selectedQuestion;
 	}
-}
-
-- (void)reloadForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-	
 }
 
 @end

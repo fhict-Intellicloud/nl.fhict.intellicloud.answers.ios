@@ -75,10 +75,19 @@ typedef NS_ENUM(NSInteger, AnswerState)
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 /**
+ * @brief Retrieves an answer from a URL.
+ * @param Resource URL
+ * @param Block to invoke when finished
+ */
++ (NSURLSessionDataTask *)getWithURL:(NSString *)url
+                  andCompletionBlock:(void (^)(Answer *answer, NSError *error))completionBlock;
+
+/**
  * Creates an answer using an attributes dictionary.
  * @param Attributes to be used
  * @param Block to invoke when finished
  */
-+ (NSURLSessionDataTask *)createAnswerWithAttributes:(NSDictionary*)attributes andCompletionBlock:(void (^)(NSError *error))completionBlock;
++ (NSURLSessionDataTask *)createAnswerWithAttributes:(NSDictionary*)attributes
+                                  andCompletionBlock:(void (^)(NSError *error))completionBlock;
 
 @end

@@ -74,14 +74,13 @@
     self.tableView.rowHeight = MenuTableCellHeight;
     
     // Set avatar for authenticated user
-    // todo: retrieve dynamically from AuthenticationManager or backend
     _currentUserImageView.clipsToBounds = YES;
     _currentUserImageView.layer.cornerRadius = _currentUserImageView.frame.size.width / 2; // half of the width
     _currentUserImageView.layer.borderColor = [UIColor colorWithWhite:1.0f alpha:0.55f].CGColor;
     _currentUserImageView.layer.borderWidth = 0.7f;
     
     //Present LoginViewController if not logged in
-    if (![[AuthenticationManager sharedClient] checkAutentication])
+    if (![[AuthenticationManager sharedClient] checkAuthentication])
     {
         UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
         if (IS_IPAD) {

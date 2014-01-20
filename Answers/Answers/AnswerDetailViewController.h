@@ -12,7 +12,7 @@
 #import "User.h"
 #import "Answer.h"
 #import "BaseDetailViewController.h"
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "SVProgressHUD.h"
 
 @interface AnswerDetailViewController : BaseDetailViewController
 

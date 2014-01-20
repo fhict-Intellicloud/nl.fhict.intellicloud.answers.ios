@@ -23,6 +23,7 @@
     dispatch_once(&onceToken, ^{
         _sharedClient = [[WebserviceManager alloc] initWithBaseURL:[NSURL URLWithString:WebserviceManagerBaseURLString]];
         [_sharedClient setRequestSerializer:[AFJSONRequestSerializer serializer]];
+        [_sharedClient setResponseSerializer:[AFJSONResponseSerializer serializer]];
     });
     
     NSString* accessToken = [[AuthenticationManager sharedClient] getAccessToken];

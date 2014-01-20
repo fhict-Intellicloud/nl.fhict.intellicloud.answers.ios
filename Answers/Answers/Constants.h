@@ -12,4 +12,7 @@
 #define IS_IPHONE    (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPAD      (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
+static NSString *const kLoggedInNotification = @"LoggedInNotification";
+static NSString *const kAnswerCreatedNotification = @"AnswerCreatedNotification";
+
 #endif
