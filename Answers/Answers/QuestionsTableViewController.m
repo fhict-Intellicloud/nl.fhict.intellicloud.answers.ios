@@ -107,6 +107,7 @@
 {
     if (!_predicate)
     {
+        NSLog(@"Using default predicate");
         // Default predicate when no existing is set
         _predicate = [NSPredicate predicateWithFormat:@"TRUEPREDICATE"];
     }

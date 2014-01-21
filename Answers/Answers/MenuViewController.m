@@ -94,23 +94,23 @@
 - (void)loadUserInfo
 {
     [User getAuthorizedUserWithCompletionBlock:^(User *user, NSError *error)
-    {
-        if (!error)
-        {
-            [_currentUserImageView setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageNamed:@"UserIcon"]];
-            
-            // Set username label
-            NSString *authorText = NSLocalizedString(@"Unknown user", nil);
-            if (user.firstName != nil && user.lastName != nil)
-            {
-                // Prepare infix, add suffix space when we have a infix
-                NSString *infix = user.infix != nil ? [NSString stringWithFormat:@" %@ ", user.infix] : @" ";
-                authorText = [NSString stringWithFormat:@"%@%@%@", user.firstName, infix, user.lastName];
-            }
-            
-            _currentUserLabel.text = authorText;
-        }
-    }];
+     {
+         if (!error)
+         {
+             [_currentUserImageView setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageNamed:@"UserIcon"]];
+             
+             // Set username label
+             NSString *authorText = NSLocalizedString(@"Unknown user", nil);
+             if (user.firstName != nil && user.lastName != nil)
+             {
+                 // Prepare infix, add suffix space when we have a infix
+                 NSString *infix = user.infix != nil ? [NSString stringWithFormat:@" %@ ", user.infix] : @" ";
+                 authorText = [NSString stringWithFormat:@"%@%@%@", user.firstName, infix, user.lastName];
+             }
+             
+             _currentUserLabel.text = authorText;
+         }
+     }];
 }
 
 #pragma mark -
@@ -153,16 +153,24 @@
 		{
             if (![rootView respondsToSelector:@selector(filterTableWithPredicate:)])
             {
-                navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"questionsViewController"]];
-                // Get root view of navigation controller
-                rootView = [navigationController.viewControllers firstObject];
+                rootView = (QuestionsTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"questionsViewController"];
             }
-
+            
 			NSLog(@"Setting predicate %@", (NSPredicate *)[itemForRow objectForKey:@"predicate"]);
 			QuestionsTableViewController *questionsTable = (QuestionsTableViewController *)rootView;
-			[questionsTable filterTableWithPredicate:(NSPredicate *)[itemForRow objectForKey:@"predicate"]];
+            [questionsTable filterTableWithPredicate:(NSPredicate *)[itemForRow objectForKey:@"predicate"]];
             [questionsTable reload:nil];
+            
+            navigationController.viewControllers = @[questionsTable];
+            rootView = navigationController.viewControllers[0];
 		}
+        
+        // Very, very, dirty hack
+        if ([rootView respondsToSelector:@selector(filterTableWithPredicate:)])
+        {
+            QuestionsTableViewController *questionsTable = (QuestionsTableViewController *)rootView;
+            [questionsTable filterTableWithPredicate:(NSPredicate *)[itemForRow objectForKey:@"predicate"]];
+        }
 		
 		// do we have an action? run it
 		
@@ -239,9 +247,9 @@
 }
 
 /*- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-	return NO;
-}*/
+ {
+ return NO;
+ }*/
 
 #pragma mark -
 #pragma mark UITableView Datasource
@@ -316,4 +324,3 @@
 }
 
 @end
-
