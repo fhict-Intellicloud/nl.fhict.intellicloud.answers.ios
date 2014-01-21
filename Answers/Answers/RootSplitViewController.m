@@ -30,17 +30,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	if(IS_IPAD)
-	{
-		BaseDetailViewController *emptyDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"emptyDetailViewController"];
-		
-		// Replace detail viewController
-		MainNavigationController *navController = [[MainNavigationController alloc] initWithRootViewController:emptyDetailViewController];
-		
-		NSArray * viewControllers = self.viewControllers;
-		NSArray * newViewControllers = [NSArray arrayWithObjects:[viewControllers objectAtIndex:0], navController, nil];
-		[self setViewControllers:newViewControllers];
-	}
+    // Add observer for handling answer created notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showEmptyDetailViewController) name:kAnswerCreatedNotification object:nil];
+    
+	[self showEmptyDetailViewController];
+}
+
+- (void)showEmptyDetailViewController
+{
+    BaseDetailViewController *emptyDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"emptyDetailViewController"];
+    
+    // Replace detail viewController
+    MainNavigationController *navController = [[MainNavigationController alloc] initWithRootViewController:emptyDetailViewController];
+    
+    NSArray * viewControllers = self.viewControllers;
+    NSArray * newViewControllers = [NSArray arrayWithObjects:[viewControllers objectAtIndex:0], navController, nil];
+    [self setViewControllers:newViewControllers];
 }
 
 - (void)didReceiveMemoryWarning

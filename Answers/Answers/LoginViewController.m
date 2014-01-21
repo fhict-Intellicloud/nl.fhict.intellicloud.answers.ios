@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     // Set loginButton localized string
-    _loginButton.titleLabel.text = NSLocalizedString(@"Login with Google", nil);
+    [_loginButton setTitle:NSLocalizedString(@"Login with Google", nil) forState:UIControlStateNormal];
 }
 
 /**
