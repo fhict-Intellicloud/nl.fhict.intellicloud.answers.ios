@@ -115,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rSi-Wf-uHc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-por" translatesAutoresizingMaskIntoConstraints="NO" id="rSi-Wf-uHc">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -481,8 +481,8 @@
         <image name="GreyCloud" width="445" height="273"/>
         <image name="Logo" width="256" height="192"/>
         <image name="LogoWhite" width="256" height="192"/>
-        <image name="MenuBackground" width="320" height="568"/>
         <image name="UserIcon" width="35" height="38"/>
+        <image name="launch-por" width="768" height="1024"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
